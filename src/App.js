@@ -11,6 +11,7 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Slide from "./components/Slide/Slide";
 import CarouselG from "./components/ProfileBox/carouselG";
 import CarouselN from "./components/ProfileBox/carouselN";
+import Notice from "./components/Notice/Notice";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/printerpc" element={<PrinterPC/>}/>
         </Routes>
         <PopularFacility/>
+        <Notice/>
         <Slide/>
         <NavigationBar/>
       </BrowserRouter>
