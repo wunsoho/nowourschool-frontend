@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const EntirePopularFacilityBack = styled.div`
         background-color: white;
-        height: 17vh;
+        height: 15vh;
         padding-Left: 2vw;
         margin-Top: 1vh;
 `;
