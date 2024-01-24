@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const FirstBack = styled.div`
     margin-bottom: 10vw;
+    margin-right: 1vw;
 `;
 
 /*프로필박스*/
@@ -12,6 +13,7 @@ export const BoxLine = styled.div`
     height: 17vh;
     left: auto;
     right: auto;
+    margin-left: 0.2vw;
     border-radius: 20px;
     border: 2px solid #1FBC70;
     display: flex;
