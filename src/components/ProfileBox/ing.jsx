@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from "../styled-components/profile.style";
+import * as S from "../ProfileBox/Style/profile.style";
 
 function Ing( ) {
     return (

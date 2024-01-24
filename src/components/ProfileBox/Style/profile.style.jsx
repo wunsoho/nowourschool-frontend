@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
+export const FirstBack = styled.div`
+    margin-bottom: 10vw;
+`;
+
 /*프로필박스*/
 export const ProfileBox = styled.div`
     position: relative;
-    width: 387px;
-    height: 160px;
+    width: 95vw;
+    height: 17vh;
     background-color: #1FBC70;
     left: auto;
     right: auto;
@@ -57,10 +61,10 @@ export const ClassInfo = styled.div`
 export const Reservation = styled.div`
     position: absolute;
     background-color: #FFFFFF66;
-    width: 356px;
-    height: 38px;
-    margin-top: 99px;
-    margin-left: 15px;
+    width: 88vw;
+    height: 4.5vh;
+    margin-top: 23vw;
+    margin-left: 3.5vw;
     border-radius: 20px;
 `;
 
@@ -70,7 +74,7 @@ export const Left = styled.div`
     line-height: 20px;
     letter-spacing: -0.5px;
     top: 50%;
-    margin-left: 65px; /*80 - 15*/
+    margin-left: 16.5vw; /*80 - 15*/
     transform: translateY(-50%);
     color: #5C5D61;
 `;
@@ -81,7 +85,7 @@ export const Right = styled.div`
     line-height: 20px;
     letter-spacing: -0.5px;
     top: 50%;
-    margin-left: 244px; /*259 - 14*/
+    margin-left: 58.5vw; /*259 - 14*/
     transform: translateY(-50%);
     color: #5C5D61;
 `;

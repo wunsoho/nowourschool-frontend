@@ -9,11 +9,14 @@ import PrinterPC from "./components/Categories/PrinterPC";
 import PopularFacility from "./components/PopularFacilities/PopularFacility";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Slide from "./components/Slide/Slide";
+import CarouselG from "./components/ProfileBox/carouselG";
+import CarouselN from "./components/ProfileBox/carouselN";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <CarouselN/>
         <Categories/>
         <Routes>
           <Route path="/study" element={<Study/>}/>

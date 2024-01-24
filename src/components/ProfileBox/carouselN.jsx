@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Profile from './profile';
 import None from './none';
+import * as B from "./Style/none.style";
 
 function CarouselN() {
     const settings = {
@@ -15,14 +16,16 @@ function CarouselN() {
     };
     return (
         <div className='slick-slider'>
-          <Slider {...settings}>
-            <div>
-              <Profile/>
-            </div>
-            <div>
-              <None/>
-            </div>
-          </Slider>
+          <B.FirstBack>
+            <Slider {...settings}>
+              <div>
+                <Profile/>
+              </div>
+              <div>
+                <None/>
+              </div>
+            </Slider>
+          </B.FirstBack>
         </div>  
     );
 }

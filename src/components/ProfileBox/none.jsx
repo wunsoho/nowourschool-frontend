@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from "../styled-components/none.style"
+import * as S from "../ProfileBox/Style/none.style";
 
 function None() {
     return (

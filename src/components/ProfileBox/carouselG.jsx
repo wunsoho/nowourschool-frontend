@@ -3,26 +3,29 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Profile from './profile';
-import Ing from './ing'
+import Ing from './ing';
+import * as B from "./Style/profile.style";
 
 function CarouselG() {
     const settings = {
         dots: true,
         infinite: false,
-        speed: 500,
+        speed: 100,
         slidesToShow: 1,
         slidesToScroll: 1,
     };
     return (
         <div className='slick-slider'>
-            <Slider {...settings}>
-                <div>
-                    <Profile/>
-                </div>
-                <div>
-                    <Ing/>
-                </div>
-            </Slider>
+            <B.FirstBack>
+                <Slider {...settings}>
+                    <div>
+                        <Profile/>
+                    </div>
+                    <div>
+                        <Ing/>
+                    </div>
+                </Slider>
+            </B.FirstBack>
         </div>
     );
 }
