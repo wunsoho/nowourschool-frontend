@@ -1,5 +1,4 @@
 import React from "react";
-import hwasalpyo from "../Image/hwasalpyo.png";
 import * as P from "../PopularFacilities/Styles/PopularFacility.style";
 import NoGauge from "./Gauges/NoGauge"; // 게이지 없음
 import OneFourGauge from "./Gauges/OneFourGauge"; // 4 분의 1 게이지
@@ -10,7 +9,8 @@ import FullGauge from "./Gauges/FullGauge";
 function PopularFacility(){
     return(
         <P.EntirePopularFacilityBack>
-            <p style={{margin:"0", fontWeight:"bold", fontSize:"18px",paddingBottom:"1vh"}}>인기시설</p>
+            <p style={{fontWeight:"bold", fontSize:"18px", paddingBottom:"0vh", display:"inline-block"}}>열람실 현황</p>
+            <p style={{fontSize:"12px", float: "Right", marginTop:"2.5vh", marginRight:"3vw",color:"#414247",fontWeight: "400"}}>전체보기</p>
             
             <P.SemiPopularFacilityBack>
                 <P.PlaceName>열린열람실</P.PlaceName>
@@ -20,7 +20,6 @@ function PopularFacility(){
                     <ThreeFourGauge/>
                     <p style={{display:"flex",float:"right"}}>&nbsp;402</p>
                 </P.GaugeBack>
-                <img src={hwasalpyo} alt="화살표" style={{float:"right"}}/>
             </P.SemiPopularFacilityBack>
 
             <br/>
@@ -33,7 +32,6 @@ function PopularFacility(){
                     <HalfGauge/>
                     <p style={{display:"flex",float:"right"}}>&nbsp;200</p>
                 </P.GaugeBack>
-                <img src={hwasalpyo} alt="화살표" style={{float:"right"}}/>
             </P.SemiPopularFacilityBack>
 
             <br/>
@@ -46,7 +44,6 @@ function PopularFacility(){
                     <OneFourGauge/>
                     <p style={{display:"flex",float:"right"}}>&nbsp;100</p>
                 </P.GaugeBack>
-                <img src={hwasalpyo} alt="화살표" style={{float:"right"}}/>
             </P.SemiPopularFacilityBack>
         </P.EntirePopularFacilityBack>
     );

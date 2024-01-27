@@ -12,6 +12,7 @@ import Slide from "./components/Slide/Slide";
 import CarouselG from "./components/ProfileBox/carouselG";
 import CarouselN from "./components/ProfileBox/carouselN";
 import Notice from "./components/Notice/Notice";
+import FAQ from "./components/FAQ/FAQ";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <PopularFacility/>
         <Notice/>
         <Slide/>
+        <FAQ/>
         <NavigationBar/>
       </BrowserRouter>
     </div>
