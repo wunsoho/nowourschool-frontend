@@ -1,7 +1,7 @@
 html,
 body,
 #root {
-  max-width: 960px;
+  max-width: 768px;
   max-height: 1280px;
   margin: auto;
 };

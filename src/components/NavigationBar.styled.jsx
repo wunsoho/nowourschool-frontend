@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.nav`
-  max-width: 960px;
+  max-width: 768px;
   width: 100%;
   position: fixed;
   bottom: 0;
