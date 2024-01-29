@@ -1,6 +1,4 @@
 import React from "react";
-import Search from "./Search/Search";
-import Alert from "./Alert/Alert";
 import alert from "../Image/alert.png";
 import search from "../Image/search.png";
 
