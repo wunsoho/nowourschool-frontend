@@ -9,7 +9,7 @@ import * as B from "./Style/none.style";
 function CarouselN() {
     const settings = {
         dots: true,
-        arrow: false,
+        arrows: false,
         infinite: false,
         speed: 500,
         slidesToShow: 1,

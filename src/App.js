@@ -13,6 +13,7 @@ import CarouselG from "./components/MainPage/ProfileBox/carouselG";
 import CarouselN from "./components/MainPage/ProfileBox/carouselN";
 import Notice from "./components/MainPage/Notice/Notice";
 import FAQ from "./components/MainPage/FAQ/FAQ";
+import MyPage from "./components/MyPage/MyPage/MyPage";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
         <Slide/>
         <FAQ/>
         <NavigationBar/>
+          <Routes>
+            <Route path="/mypage" element={<MyPage/>}/>
+          </Routes>
       </BrowserRouter>
     </div>
   );

@@ -9,7 +9,7 @@ import * as B from "./Style/profile.style";
 function CarouselG() {
     const settings = {
         dots: true,
-        arrow: false,
+        arrows: false,
         infinite: false,
         speed: 100,
         slidesToShow: 1,
