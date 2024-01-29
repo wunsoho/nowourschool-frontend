@@ -16,19 +16,19 @@ function PageFunctions(){
             flexDirection:"column",
             lineHeight:"4vh"
         }}>
-            <Link to="/booking" target="_blank" style={{marginLeft:"4vw", marginTop:"2vh", textDecoration: "none"}}>
+            <Link to="/booking" style={{marginLeft:"4vw", marginTop:"2vh", textDecoration: "none"}}>
                 <img src={Booking} alt="예약" style={{float:"left", marginTop:"2.7vh"}}/>
                 <p style={{marginLeft:"7vw", letterSpacing:"-0.1em", fontWeight:"600", fontSize:"18px", color:"#414247"}}>예약내역</p>
             </Link>
-            <Link to="/qna" target="_blank" style={{marginLeft:"4vw", textDecoration: "none"}}>
+            <Link to="/qna" style={{marginLeft:"4vw", textDecoration: "none"}}>
                 <img src={QnA} alt="문의" style={{float:"left", marginTop:"2.7vh"}}/>
                 <p style={{marginLeft:"7vw", letterSpacing:"-0.1em", fontWeight:"600", fontSize:"18px", color:"#414247"}}>문의하기</p>
             </Link>
-            <Link to="/review" target="_blank" style={{marginLeft:"4vw", textDecoration: "none"}}>
+            <Link to="/review" style={{marginLeft:"4vw", textDecoration: "none"}}>
                 <img src={Review} alt="리뷰" style={{float:"left", marginTop:"2.7vh"}}/>
                 <p style={{marginLeft:"7vw", letterSpacing:"-0.1em", fontWeight:"600", fontSize:"18px", color:"#414247"}}>리뷰 관리</p>
             </Link>
-            <Link to="/account" target="_blank" style={{marginLeft:"4vw", textDecoration: "none"}}>
+            <Link to="/account" style={{marginLeft:"4vw", textDecoration: "none"}}>
                 <img src={Account} alt="계정"   style={{float:"left", marginTop:"2.7vh"}}/>
                 <p style={{marginLeft:"7vw", letterSpacing:"-0.1em", fontWeight:"600", fontSize:"18px", color:"#414247"}}>계정 관리</p>
             </Link>

@@ -14,11 +14,13 @@ import CarouselN from "./components/MainPage/ProfileBox/carouselN";
 import Notice from "./components/MainPage/Notice/Notice";
 import FAQ from "./components/MainPage/FAQ/FAQ";
 import MyPage from "./components/MyPage/MyPage/MyPage";
+import Header from "./components/MainPage/Header/Header";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header/>
         <CarouselN/>
         <Categories/> 
         <Routes>
