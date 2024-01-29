@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <CarouselN/>
-        <Categories/>
+        <Categories/> 
         <Routes>
           <Route path="/study" element={<Study/>}/>
           <Route path="/semina" element={<Semina/>}/>
