@@ -39,7 +39,7 @@ function App() {
         <Notice/>
         <Slide/>
         <FAQ/>
-        <NavigationBar></NavigationBar>
+        <NavigationBar/>
           <Routes>
             <Route path="/mypage" element={<MyPage/>}/>
           </Routes>
