@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 
 export const component = styled.div`
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     margin-top: 20px;
 `;
 export const CustomSlider = styled(Slider)`
