@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import hwasalpyo2 from "../Image/hwasalpyo2.png";
 import search from "../Image/search.png";
 
 function SearchTap(){
     return(
         <div>
-            <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"0.3vh", marginLeft:"2vw"}}/>
+            <Link to="/">
+                <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"0.3vh", marginLeft:"2vw"}}/>
+            </Link>
             <h3 style={{marginLeft:"43vw", fontSize:"20px"}}>검색</h3> 
             <div style={{
                 width:"89vw",
