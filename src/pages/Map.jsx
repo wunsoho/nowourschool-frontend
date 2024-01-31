@@ -8,6 +8,8 @@ import InfoPicImg from '../img/roomimg.png'
 function Map() {
     const [map, setMap] = useState(null);
     const [markers, setMarkers] = useState([]);
+    const [selectedMarker, setSelectedMarker] = useState(null);
+    const [showInfo, setShowInfo] = useState(false);
     const ref = useRef();
     const myStyles = [
         {
@@ -17,6 +19,12 @@ function Map() {
         },
       ];
   
+    useEffect(() => {
+        if (!selectedMarker) {
+            setShowInfo(false);
+        }
+    }, [selectedMarker]);
+
     useEffect(()=>{
         const newMap = new window.google.maps.Map(ref.current, {
             center: { lat: 35.5437, lng: 129.2562 },
@@ -77,7 +85,7 @@ function Map() {
           ];
 
           const newMarkers = markerPositions.map(position => {
-              return new window.google.maps.Marker({
+            const marker = new window.google.maps.Marker({
                   position: { lat: position.lat, lng: position.lng },
                   map: map,
                   title: position.name,
@@ -96,11 +104,69 @@ function Map() {
                     labelOrigin: new window.google.maps.Point(15, 12),
                   },
               });
-          });
 
-          setMarkers(newMarkers);
+            return marker;
+        });
+
+        setMarkers(newMarkers);
       }
   }, [map]);
+
+  useEffect(() => {
+    const clickListeners = [];
+
+    markers.forEach(marker => {
+      marker.addListener('click', () => {
+        if (selectedMarker === marker) {
+          setSelectedMarker(null);
+          setShowInfo(false);
+          marker.setIcon({
+            url: `data:image/svg+xml;utf-8,${encodeURIComponent(
+              renderToString(
+                <FontAwesomeIcon icon="location-pin" style={{ color: '#1FBC70' }} />
+              )
+            )}`,
+            anchor: new window.google.maps.Point(20, 27),
+            scaledSize: new window.google.maps.Size(30, 30),
+            labelOrigin: new window.google.maps.Point(15, 12),
+          });
+        } else {
+
+          if (selectedMarker) {
+            selectedMarker.setIcon({
+              url: `data:image/svg+xml;utf-8,${encodeURIComponent(
+                renderToString(
+                  <FontAwesomeIcon icon="location-pin" style={{ color: '#1FBC70' }} />
+                )
+              )}`,
+              anchor: new window.google.maps.Point(20, 27),
+              scaledSize: new window.google.maps.Size(30, 30),
+              labelOrigin: new window.google.maps.Point(15, 12),
+            });
+          }
+
+          setSelectedMarker(marker);
+          setShowInfo(true);
+          marker.setIcon({
+            url: `data:image/svg+xml;utf-8,${encodeURIComponent(
+              renderToString(
+                <FontAwesomeIcon icon="location-pin" style={{ color: 'red' }} />
+              )
+            )}`,
+            anchor: new window.google.maps.Point(20, 27),
+            scaledSize: new window.google.maps.Size(30, 30),
+            labelOrigin: new window.google.maps.Point(15, 12),
+          });
+        }
+      });
+    });
+
+    return () => {
+      clickListeners.forEach(listener => {
+        window.google.maps.event.removeListener(listener);
+      });
+    };
+  }, [markers, selectedMarker]);
 
   return (
     <MapContent>
@@ -112,33 +178,36 @@ function Map() {
             </MapMenu>
             <MapTitle>지도</MapTitle>
         </MapHeader>
-        <MapNotice>마커 클릭시 건물 정보를 확인할 수 있습니다.</MapNotice>
         <GoogleMap
             ref={ref}
             id="map"
             style={{ width: "100%", height: "100vh"}}
         ></GoogleMap>
-        <MarkerInfo>
-          <InfoContent>
-            <InfoPic alt="InfoImg" src={InfoPicImg}>
-            </InfoPic>
-            <InfoWord>
-              <InfoTitle>
-                학생식당
-              </InfoTitle>
-              <InfoTime>
-                이용 가능 시간<br />
-                아침식사 : 09:00 ~ 17:00<br />
-                점심식사 : 09:00 ~ 17:00<br />
-                저녁식사 : 09:00 ~ 17:00<br />
-                브레이크 타임 : 09:00 ~ 17:00
-              </InfoTime>
-            </InfoWord>
-          </InfoContent>
-          <InfoButton>
-            <InfoDetail to="/detailinfo">상세정보</InfoDetail>
-          </InfoButton>
-        </MarkerInfo>
+        {showInfo ? (
+          <MarkerInfo>
+            <InfoContent>
+              <InfoPic alt="InfoImg" src={InfoPicImg}>
+              </InfoPic>
+              <InfoWord>
+                <InfoTitle>
+                  학생식당
+                </InfoTitle>
+                <InfoTime>
+                  이용 가능 시간<br />
+                  아침식사 : 09:00 ~ 17:00<br />
+                  점심식사 : 09:00 ~ 17:00<br />
+                  저녁식사 : 09:00 ~ 17:00<br />
+                  브레이크 타임 : 09:00 ~ 17:00
+                </InfoTime>
+              </InfoWord>
+            </InfoContent>
+            <InfoButton>
+              <InfoDetail to="/detailinfo">상세정보</InfoDetail>
+            </InfoButton>
+          </MarkerInfo>
+        ) : (
+          <MapNotice>마커 클릭시 건물 정보를 확인할 수 있습니다.</MapNotice>
+        )}
     </MapContent>
   );
 }

@@ -5,6 +5,7 @@ import Reservation from "./pages/Reservation";
 import Map from "./pages/Map";
 import MyPage from "./pages/MyPage";
 import Category from "./pages/CategoryBuilding"
+import Search from "./pages/Search";
 import DetailInfo from "./pages/DetailInfo"
 import Notification from "./pages/Notification"
 import FAQ from "./pages/FAQ"
@@ -35,6 +36,7 @@ function App() {
                           <NavigationBar />
                         </>} />
         <Route path="/category" element={<Category />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/detailinfo" element={<DetailInfo />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/faq" element={<FAQ />} />

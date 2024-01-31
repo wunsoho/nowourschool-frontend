@@ -36,7 +36,7 @@ export const NotiTitle = styled.div`
 export const NotiSortDiv = styled.div`
     z-index: 1;
     margin-top: 60px;
-    border-bottom: 1.5px solid #B1B1B1;
+    border-bottom: 1.5px solid #D4D4D4;
 `
 
 export const NotiSort = styled.select`
