@@ -18,6 +18,7 @@ export const BoxLine = styled.div`
     border: 2px solid #1FBC70;
     display: flex;
     align-items: center;
+    background-color: #F1FFF3;
 `;
 
 export const Phrase = styled.div`
