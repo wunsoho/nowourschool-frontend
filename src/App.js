@@ -16,6 +16,7 @@ import FAQ from "./components/MainPage/FAQ/FAQ";
 import MyPage from "./components/MyPage/MyPage/MyPage";
 import Header from "./components/MainPage/Header/Header";
 import SearchTap from "./components/MainPage/SearchTap/SearchTap";
+import SearchResults from "./components/MainPage/SearchTap/SearchResults";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/search" element={<SearchTap/>}/>
+          <Route path="/results" element={<SearchResults/>}/>
         </Routes>
         {/* 검색 창 잠시 디자인 볼려고 이 위치에 배치 해놓음 추후에 onclick으로 연결시킬 예정 */} 
         <CarouselN/>

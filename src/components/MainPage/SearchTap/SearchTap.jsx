@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import hwasalpyo2 from "../Image/hwasalpyo2.png";
-import search from "../Image/search.png";
+import search1 from "../Image/search1.png";
 
 function SearchTap(){
     return(
@@ -27,7 +27,9 @@ function SearchTap(){
                 border:"0",
                 fontSize:"16px"
                 }}></input>
-                <img src={search} alt="검색" style={{float:"right", width:"7vw", marginTop:"0.7vh", marginRight:"4vw"}}></img>
+                <Link to="/results">
+                    <img src={search1} alt="검색" style={{float:"right", width:"7vw", marginTop:"0.7vh", marginRight:"4vw"}}></img>
+                </Link>
             </div>
             <div style={{marginLeft:"4vw",marginBottom:"10vh"}}>
                 <h4 style={{color:"var(--main, #1FBC70)",fontFamily:"Pretendard",fontSize:"18px",fontWeight:"600",lineHeight:"1vw",letterSpacing:"-0.5px"}}>최근 검색어</h4>
