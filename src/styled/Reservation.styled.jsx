@@ -46,7 +46,7 @@ export const ReservationCategoryAll = styled.div`
 export const ReservationCategory1st = styled.div`
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 58%;
     height: calc(100vh - 113px);
     margin-top: 45px;
     border-right: 1.5px solid #D4D4D4;
@@ -54,9 +54,7 @@ export const ReservationCategory1st = styled.div`
 
     & > div {
         display: flex;
-        margin-left: 15px;
-        margin-top: 25px;
-        margin-bottom: 15px;
+        margin: 25px 15px 20px 20px;
         flex-direction: column;
         justify-content: center;
         align-items: start;
@@ -72,20 +70,18 @@ export const ReservationCategory1st = styled.div`
 export const ReservationCategory2nd = styled.div`
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 42%;
     height: calc(100vh - 113px);
     margin-top: 45px;
     overflow-y: auto;
-`
 
-export const List2nd = styled(Link)`
-    display: flex;
-    margin-left: 15px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    color: #BBBBBB;    
-    text-decoration: none;
+    & > div {
+        display: flex;
+        margin: 25px 15px 20px 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        color: #BBBBBB;
+        cursor: pointer;
+    }
 `

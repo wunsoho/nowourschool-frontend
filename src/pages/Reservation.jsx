@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ReservationContent, ReservationHeader, ReservationTitle, ReservationSearch, ReservationCategoryAll, ReservationCategory1st, ReservationCategory2nd, List2nd } from "../styled/Reservation.styled";
+import { ReservationContent, ReservationHeader, ReservationTitle, ReservationSearch, ReservationCategoryAll, ReservationCategory1st, ReservationCategory2nd } from "../styled/Reservation.styled";
 
 export default function Reservation() {
   const [selected1stCategory, setSelected1stCategory] = useState("01호관-화학공학관");
@@ -13,7 +13,7 @@ export default function Reservation() {
     "03호관-공학행정관",
     "05호관-산학협력리더스홀",
     "06호관-조형관",
-    "07호관-전기/컴퓨터 공학관",
+    "07호관-전기/컴퓨터공학관",
     "08호관-자연과학관",
     "09호관-대학회관/해송홀",
     "10호관-문수관",
@@ -64,7 +64,7 @@ export default function Reservation() {
       "201호 강의실",
       "202호 강의실",
     ],
-    "07호관-전기/컴퓨터 공학관" :[
+    "07호관-전기/컴퓨터공학관" :[
       "101호 강의실",
       "102호 강의실",
       "103호 강의실",
@@ -155,8 +155,8 @@ export default function Reservation() {
     setSelected2ndCategory(null);
   };
 
-  const handle2ndCategoryClick = (category) => {
-    setSelected2ndCategory(category);
+  const handle2ndCategoryClick = () => {
+    window.location.href = "/detailinfo";
   };
 
   return (
@@ -179,9 +179,9 @@ export default function Reservation() {
         </ReservationCategory1st>
         <ReservationCategory2nd>
           {(categoriesMap[selected1stCategory] || []).map(category => (
-            <List2nd to="detail" key={category} onClick={() => handle2ndCategoryClick(category)} className={selected2ndCategory === category ? "active" : ""}>
+            <div key={category} onClick={() => handle2ndCategoryClick(category)}>
               {category}
-            </List2nd>
+            </div>
           ))}
         </ReservationCategory2nd>
       </ReservationCategoryAll>

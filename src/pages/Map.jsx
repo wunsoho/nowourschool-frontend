@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from 'react-dom/server';
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MapContent, MapHeader, MapMenu, MapTitle, MapNotice, GoogleMap, MarkerInfo, InfoPic, InfoTitle, InfoTime, InfoWord, InfoContent, InfoButton, InfoDetail, InfoReservation } from "../styled/Map.styled";
+import { MapContent, MapHeader, MapMenu, MapTitle, MapNotice, GoogleMap, MarkerInfo, InfoPic, InfoTitle, InfoTime, InfoWord, InfoContent, InfoButton, InfoDetail } from "../styled/Map.styled";
 import InfoPicImg from '../img/roomimg.png'
 
 function Map() {
@@ -23,7 +23,10 @@ function Map() {
         if (!selectedMarker) {
             setShowInfo(false);
         }
-    }, [selectedMarker]);
+        else {
+          map.panTo(selectedMarker.getPosition());
+        }
+    }, [map, selectedMarker]);
 
     useEffect(()=>{
         const newMap = new window.google.maps.Map(ref.current, {
@@ -171,7 +174,7 @@ function Map() {
   return (
     <MapContent>
         <MapHeader>
-            <MapMenu to="/category">
+            <MapMenu to="category">
               <FontAwesomeIcon
                   icon="bars"
                   style={{ fontSize: '1.6em' }} />

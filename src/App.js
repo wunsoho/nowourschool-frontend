@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import Home from "./pages/Home";
 import Reservation from "./pages/Reservation";
-import ReservationDetail from "./pages/ReservationDetail";
 import Map from "./pages/Map";
 import MyPage from "./pages/MyPage";
 import Category from "./pages/CategoryBuilding"
@@ -26,11 +25,6 @@ function App() {
             <Reservation />
             <NavigationBar />
           </>} />
-        <Route path="/reservation/detail" element={
-          <>
-            <ReservationDetail />
-            <NavigationBar />
-          </>} />
         <Route path="/map" element={
           <>
             <Map />
@@ -41,7 +35,7 @@ function App() {
             <MyPage />
             <NavigationBar />
           </>} />
-        <Route path="/category" element={<Category />} />
+        <Route path="/map/category" element={<Category />} />
         <Route path="/search" element={<Search />} />
         <Route path="/detailinfo" element={<DetailInfo />} />
         <Route path="/notification" element={<Notification />} />

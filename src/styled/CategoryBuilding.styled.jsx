@@ -45,12 +45,14 @@ export const CategorySearch = styled(Link)`
 
 export const CategoryAll = styled.div`
     display: flex;
+    overflow-x: auto;
 `
 
 export const Category1st = styled.div`
     display: flex;
     flex-direction: column;
-    width: 35%;
+    min-width: 41.9%;
+    max-width: 41.9%;
     height: calc(100vh - 45px);
     margin-top: 45px;
     border-right: 1.5px solid #D4D4D4;
@@ -58,9 +60,7 @@ export const Category1st = styled.div`
 
     & > div {
         display: flex;
-        margin-left: 25px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 25px 0 20px 20px;
         flex-direction: column;
         justify-content: center;
         align-items: start;
@@ -76,16 +76,15 @@ export const Category1st = styled.div`
 export const Category2nd = styled.div`
     display: flex;
     flex-direction: column;
-    width: 65%;
+    min-width: 57.9%;
+    max-width: 57.9%;
     height: calc(100vh - 45px);
     margin-top: 45px;
     overflow-y: auto;
 
     & > div {
         display: flex;
-        margin-left: 25px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin: 25px 15px 20px 20px;
         flex-direction: column;
         justify-content: center;
         align-items: start;
@@ -94,5 +93,25 @@ export const Category2nd = styled.div`
         &.active {
             color: #1FBC70;
         }
+    }
+`
+
+export const Category3rd = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-width: 41.9%;
+    max-width: 41.9%;
+    height: calc(100vh - 45px);
+    margin-top: 45px;
+    border-left: 1.5px solid #D4D4D4;
+    overflow-y: auto;
+
+    & > div {
+        display: flex;
+        margin: 25px 15px 45px 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        color: #BBBBBB;
     }
 `

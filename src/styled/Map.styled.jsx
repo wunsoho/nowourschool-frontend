@@ -61,7 +61,7 @@ export const GoogleMap = styled.div`
 export const MarkerInfo = styled.div`
     display: flex;
     z-index: 1;
-    max-width: 768px;
+    max-width: 723px;
     width: 90%;
     position: fixed;
     bottom: 75px;
@@ -90,9 +90,7 @@ export const InfoWord = styled.div`
     display: flex;
     z-index: 2;
     flex-direction: column;
-    margin-left: 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px 0 5px 15px;
 `
 
 export const InfoTitle = styled.div`
