@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const CategoryContent = styled.div`
+export const ReservationContent = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
     position: relative;
 `
 
-export const CategoryHeader = styled.div`
+export const ReservationHeader = styled.div`
     display: flex;
     z-index: 1;
     max-width: 768px;
@@ -18,17 +18,13 @@ export const CategoryHeader = styled.div`
     top: 0;
     margin: 0;
     padding: 5px;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     background-color: white;
     border-bottom: 1.5px solid #D4D4D4;
 `
 
-export const CategoryBack = styled.div`
-    margin: 5px;
-`
-
-export const CategoryTitle = styled.div`
+export const ReservationTitle = styled.div`
     margin: 0;
     position: fixed;
     left: 50%;
@@ -37,30 +33,30 @@ export const CategoryTitle = styled.div`
     font-weight: bold;
 `
 
-export const CategorySearch = styled(Link)`
+export const ReservationSearch = styled(Link)`
     margin-right: 15px;
     text-decoration: none;
     color: black;
 `
 
-export const CategoryAll = styled.div`
+export const ReservationCategoryAll = styled.div`
     display: flex;
 `
 
-export const Category1st = styled.div`
+export const ReservationCategory1st = styled.div`
     display: flex;
     flex-direction: column;
-    width: 35%;
-    height: calc(100vh - 45px);
+    width: 55%;
+    height: calc(100vh - 113px);
     margin-top: 45px;
     border-right: 1.5px solid #D4D4D4;
     overflow-y: auto;
 
     & > div {
         display: flex;
-        margin-left: 25px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-left: 15px;
+        margin-top: 25px;
+        margin-bottom: 15px;
         flex-direction: column;
         justify-content: center;
         align-items: start;
@@ -73,26 +69,23 @@ export const Category1st = styled.div`
     }
 `
 
-export const Category2nd = styled.div`
+export const ReservationCategory2nd = styled.div`
     display: flex;
     flex-direction: column;
-    width: 65%;
-    height: calc(100vh - 45px);
+    width: 45%;
+    height: calc(100vh - 113px);
     margin-top: 45px;
     overflow-y: auto;
+`
 
-    & > div {
-        display: flex;
-        margin-left: 25px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        color: #BBBBBB;
-
-        &.active {
-            color: #1FBC70;
-        }
-    }
+export const List2nd = styled(Link)`
+    display: flex;
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #BBBBBB;    
+    text-decoration: none;
 `

@@ -7,14 +7,20 @@ import { Wrapper, StyledNav, NavLink } from "./NavigationBar.styled";
 const NavigationBar = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const [activeNav, setActiveNav] = useState(searchParams.get("activeNav") || 'home');
+  const [activeNav, setActiveNav] = useState(() => {
+    const activeNavFromPathname = location.pathname.split('/')[1];
+    return activeNavFromPathname || "home";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("activeNav", activeNav);
+  }, [activeNav]);
 
   const handleClick = (navItem) => {
-    console.log("Clicked navItem:", navItem);
     setActiveNav(navItem);
     const newSearchParams = new URLSearchParams(searchParams.toString());
     newSearchParams.set("activeNav", navItem);
-    window.history.replaceState({}, "", `${location.pathname}?${newSearchParams}`);
+    window.history.push({ search: newSearchParams.toString() });
   }
 
   return (
