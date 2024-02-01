@@ -5,7 +5,7 @@ import search1 from "../Image/search1.png";
 
 function Header()   {
     return(
-        <div>
+        <div style={{fontFamily: "Pretendard"}}>
             <Link to="/">
                 <h3 style={{display:"inline-block",marginLeft:"31.5vw", color:"#1FBC70", fontSize:"20px"}}>지금 우리 학교는</h3>
             </Link>

@@ -16,7 +16,7 @@ function CarouselN() {
         slidesToScroll: 1,
     };
     return (
-        <div className='slick-slider'>
+        <div className='slick-slider' style={{fontFamily: "Pretendard"}}>
           <B.FirstBack>
             <Slider {...settings}>
               <div>

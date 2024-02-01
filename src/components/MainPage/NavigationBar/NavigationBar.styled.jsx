@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.nav`
+  font-family: Pretendard;
   max-width: 96vw;
   width: 100%;
   position: fixed;

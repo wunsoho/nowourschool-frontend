@@ -17,6 +17,7 @@ import MyPage from "./components/MyPage/MyPage/MyPage";
 import Header from "./components/MainPage/Header/Header";
 import SearchTap from "./components/MainPage/SearchTap/SearchTap";
 import SearchResults from "./components/MainPage/SearchTap/SearchResults";
+import PlaceStates from "./components/MainPage/PopularFacilities/PlaceStates";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/printerpc" element={<PrinterPC/>}/>
         </Routes>
         <PopularFacility/>
+        <PlaceStates/>
         <Notice/>
         <Slide/>
         <FAQ/>

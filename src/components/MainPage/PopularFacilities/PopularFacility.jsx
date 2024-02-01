@@ -1,10 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import * as P from "../PopularFacilities/Styles/PopularFacility.style";
-import NoGauge from "./Gauges/NoGauge"; // 게이지 없음
-import OneFourGauge from "./Gauges/OneFourGauge"; // 4 분의 1 게이지
-import HalfGauge from "./Gauges/HalfGauge";
-import ThreeFourGauge from "./Gauges/ThreeFourGauge";
-import FullGauge from "./Gauges/FullGauge";
+import NoGauge from "./Gauges/MainVersion/NoGauge"; // 게이지 없음
+import OneFourGauge from "./Gauges/MainVersion/OneFourGauge"; // 4 분의 1 게이지
+import HalfGauge from "./Gauges/MainVersion/HalfGauge";
+import ThreeFourGauge from "./Gauges/MainVersion/ThreeFourGauge";
+import FullGauge from "./Gauges/MainVersion/FullGauge";
 
 function PopularFacility(){
     return(

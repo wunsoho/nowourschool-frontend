@@ -5,6 +5,7 @@ export const EntirePopularFacilityBack = styled.div`
         height: 15vh;
         padding-Left: 2vw;
         margin-Top: 1vh;
+        margin-bottom: 5vh;
 `;
 
 export const SemiPopularFacilityBack = styled.div`
