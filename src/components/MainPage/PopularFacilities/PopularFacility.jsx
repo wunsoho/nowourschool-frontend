@@ -8,12 +8,18 @@ import ThreeFourGauge from "./Gauges/MainVersion/ThreeFourGauge";
 import FullGauge from "./Gauges/MainVersion/FullGauge";
 
 function PopularFacility(){
+
+    const navigate = useNavigate();
+
+    function handleClick (){
+        navigate('/popularfacility/placestates');
+    }
+
     return(
         <P.EntirePopularFacilityBack>
-            <p style={{fontWeight:"bold", fontSize:"18px", paddingBottom:"0vh", display:"inline-block"}}>열람실 현황</p>
-            <Link to="/placestates">
-                <p style={{fontSize:"12px", float: "Right", marginTop:"2.5vh", marginRight:"3vw",color:"#414247",fontWeight: "400"}}>전체보기</p>
-            </Link>
+            <p style={{fontWeight:"bold", fontSize:"18px", paddingBottom:"0vh", display:"inline-block"}}>열람실 현황</p>    
+            <p onClick={handleClick} style={{fontSize:"12px", float: "Right", marginTop:"2.5vh", marginRight:"3vw",color:"#414247",fontWeight: "400"}}>전체보기</p>
+            
             <P.SemiPopularFacilityBack>
                 <P.PlaceName>열린열람실</P.PlaceName>
             {/* 남아있는 좌석에 따라 움직이는 표시 및 게이지 표시할 자리 */}

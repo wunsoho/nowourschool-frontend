@@ -4,7 +4,9 @@ import PageFunctions from "./PageFunctions";
 
 function MyPage(){
     return(
-    <div>
+    <div style={{
+        height:"100vh"
+    }}>
         <Profile/>
         <PageFunctions/>
     </div>

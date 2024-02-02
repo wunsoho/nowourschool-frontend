@@ -2,10 +2,18 @@ import React from "react";
 import * as R from "./Style/Review.style";
 import SoGangDang from "../../Image/SoGangDang.png";
 import Openclass from "../../Image/OpenClass.png";
+import { useNavigate } from "react-router-dom";
 
 function Review(){
+
+    const navigate = useNavigate();
+
+    function handleClick(){
+        navigate('/review/')
+    }
+
     return(
-        <div>
+        <div style={{height:"100vh"}}>
             <h3 style={{display:"flex",justifyContent:"center"}}>리뷰 관리</h3>
 
             <div style={{backgroundColor: "#FFFFFF", width:"96vw", height:"6vh"}}>

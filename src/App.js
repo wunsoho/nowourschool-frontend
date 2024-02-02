@@ -18,12 +18,16 @@ import Header from "./components/MainPage/Header/Header";
 import SearchTap from "./components/MainPage/SearchTap/SearchTap";
 import SearchResults from "./components/MainPage/SearchTap/SearchResults";
 import PlaceStates from "./components/MainPage/PopularFacilities/PlaceStates";
+import Booking from "./components/MyPage/MyPage/PageFunctions/Booking";
+import QnA from "./components/MyPage/MyPage/PageFunctions/QnA";
+import Review from "./components/MyPage/MyPage/PageFunctions/Review";
+import Account from "./components/MyPage/MyPage/PageFunctions/Account";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header/>
+        <Header/> 
         <Routes>
           <Route path="/search" element={<SearchTap/>}/>
           <Route path="/results" element={<SearchResults/>}/>
@@ -40,7 +44,7 @@ function App() {
         </Routes>
         <PopularFacility/>
         <Routes>
-          <Route path="/placestates" element={<PlaceStates/>}/>
+          <Route path="/popularfacility/placestates" element={<PlaceStates/>}/>
         </Routes>
         <Notice/>
         <Slide/>
@@ -48,6 +52,10 @@ function App() {
         <NavigationBar/>
           <Routes>
             <Route path="/mypage" element={<MyPage/>}/>
+            <Route path="/booking" element={<Booking/>}/>
+            <Route path="/qna" element={<QnA/>}/>
+            <Route path="/review" element={<Review/>}/>
+            <Route path="/account" element={<Account/>}/>
           </Routes>
       </BrowserRouter>
     </div>
