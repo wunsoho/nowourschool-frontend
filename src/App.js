@@ -21,7 +21,8 @@ import PlaceStates from "./components/MainPage/PopularFacilities/PlaceStates";
 import Booking from "./components/MyPage/MyPage/PageFunctions/Booking";
 import QnA from "./components/MyPage/MyPage/PageFunctions/QnA";
 import Review from "./components/MyPage/MyPage/PageFunctions/Review";
-import Account from "./components/MyPage/MyPage/PageFunctions/Account";
+import Account from "./components/MyPage/MyPage/PageFunctions/Account/Account";
+import ChangePassword from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
             <Route path="/qna" element={<QnA/>}/>
             <Route path="/review" element={<Review/>}/>
             <Route path="/account" element={<Account/>}/>
+            <Route path="/changepassword" element={<ChangePassword/>}/>
           </Routes>
       </BrowserRouter>
     </div>

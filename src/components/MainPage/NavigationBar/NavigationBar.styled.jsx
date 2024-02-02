@@ -8,6 +8,8 @@ export const Wrapper = styled.nav`
   position: fixed;
   bottom: 0;
   z-index: 2;
+  box-shadow: 0px 1px 3.5px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5vw;
 `;
 
 export const StyledNav = styled.nav`
@@ -16,8 +18,8 @@ export const StyledNav = styled.nav`
   justify-content: space-between;
   background-color: #FFFFFF;
   border-top: 1px solid #EBEBEB;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-top-left-radius: 5vw;
+  border-top-right-radius: 5vw;
 `;
 
 export const NavLink = styled(Link)`

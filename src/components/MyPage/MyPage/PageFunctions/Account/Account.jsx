@@ -1,8 +1,8 @@
 import React from "react";
-import hwasalpyo2 from "../../../MainPage/Image/hwasalpyo2.png";
-import ChangePassword from "../../Image/ChangePassword.png";
-import AccountBox from "../../Image/AccountBox.png";
-import LogOut from "../../Image/Logout.png";
+import hwasalpyo2 from "../../../../MainPage/Image/hwasalpyo2.png";
+import ChangePassword from "../../../Image/ChangePassword.png";
+import AccountBox from "../../../Image/AccountBox.png";
+import LogOut from "../../../Image/Logout.png";
 import { Link } from "react-router-dom";
 
 function Account(){
@@ -25,6 +25,7 @@ function Account(){
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",
+                    letterSpacing:"-0.4vw",
                     textDecoration: "none"}}>비밀번호 변경</h4>
                 </Link>
             </div>
@@ -38,6 +39,7 @@ function Account(){
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",
+                    letterSpacing:"-0.4vw",
                     textDecoration:"none"}}>회원 탈퇴</h4>
                 </Link>
             </div>
@@ -51,6 +53,7 @@ function Account(){
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",
+                    letterSpacing:"-0.4vw",
                     textDecoration: "none"}}>로그아웃</h4>
                 </Link>
             </div>
