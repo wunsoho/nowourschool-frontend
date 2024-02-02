@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as P from "../PopularFacilities/Styles/PopularFacility.style";
 import NoGauge from "./Gauges/MainVersion/NoGauge"; // 게이지 없음
 import OneFourGauge from "./Gauges/MainVersion/OneFourGauge"; // 4 분의 1 게이지
@@ -11,8 +11,9 @@ function PopularFacility(){
     return(
         <P.EntirePopularFacilityBack>
             <p style={{fontWeight:"bold", fontSize:"18px", paddingBottom:"0vh", display:"inline-block"}}>열람실 현황</p>
-            <p style={{fontSize:"12px", float: "Right", marginTop:"2.5vh", marginRight:"3vw",color:"#414247",fontWeight: "400"}}>전체보기</p>
-            
+            <Link to="/placestates">
+                <p style={{fontSize:"12px", float: "Right", marginTop:"2.5vh", marginRight:"3vw",color:"#414247",fontWeight: "400"}}>전체보기</p>
+            </Link>
             <P.SemiPopularFacilityBack>
                 <P.PlaceName>열린열람실</P.PlaceName>
             {/* 남아있는 좌석에 따라 움직이는 표시 및 게이지 표시할 자리 */}

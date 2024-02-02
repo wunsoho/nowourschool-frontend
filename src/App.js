@@ -39,7 +39,9 @@ function App() {
           <Route path="/printerpc" element={<PrinterPC/>}/>
         </Routes>
         <PopularFacility/>
-        <PlaceStates/>
+        <Routes>
+          <Route path="/placestates" element={<PlaceStates/>}/>
+        </Routes>
         <Notice/>
         <Slide/>
         <FAQ/>
