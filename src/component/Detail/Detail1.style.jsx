@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Body = styled.div`
+  overflow-x : hidden;
+  max-width: 960px;
+  width: 100%;
+`
 export const ArrowContainer = styled.button`
   position: absolute;
   top: 50%;
@@ -14,11 +19,11 @@ export const ArrowContainer = styled.button`
 
 export const TextContainer = styled.div`
   width : 70vw;
-  margin-left : 10px;
-  margin-top : 10px;
+  margin-left : 3vw;
+  margin-top : 1vh;
 `
 export const TitleText = styled.div`
-  font-size : 18px;
+  font-size : 1.2em;
   font-weight : bold;
 `
 export const Number = styled.div`
@@ -26,15 +31,15 @@ export const Number = styled.div`
 `
 export const Time = styled.div`
   margin-top : 10px;
-  font-size : 13px;
+  font-size : 0.8em;
   color : #626262;
 `
 export const All = styled.div`
   display : flex;
 `
 export const StarRateWrap = styled.div`
-  margin-top : 15px;
-  margin-left : 70px;
+  margin-top : 2vh;
+  margin-left : 16vw;
   width: 100%;
   .star_icon {
     display: inline-flex;
@@ -42,7 +47,7 @@ export const StarRateWrap = styled.div`
   }
 `
 export const ReviewButton = styled.div`
-  margin-top : 25px;
+  margin-top : 2.5vh;
   .button1 {
     border: none;
     background-color : #ffffff;
@@ -50,41 +55,45 @@ export const ReviewButton = styled.div`
 `
 export const StarText = styled.div`
   display : inline-block;
-  margin-left : 3px;
-  font-size : 13px;
+  margin-left : 1.5vw;
+  font-size : 0.8em;
   color : #FFBE55;
 `
 export const ReviewWrap = styled.div`
   width : 40vw;
 ` 
 export const ImageSlider = styled.div`
+.img{
+  max-width : 960px;
+  width : 100%;
+}
 `
 
 export const ReviewSilder = styled.div`
-  margin-top : 20px;
+  margin-top : 2.5vh;
   .review-slide{
-    padding : 10px;
+    padding : 0.8em;
     height : 13vh;
     border: 1px solid #ccc;
     box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px; 
+    border-radius: 8vw; 
     overflow: hidden; 
     margin: 0 5px; 
   }
 `
 export const ReviewDate = styled.div`
-  font-size : 13px;
+  font-size : 0.8em;
   color : #B1B1B1;
 `
 export const ReviewInfo = styled.div`
 `
 export const StarRateWrap2 = styled.div`
-  margin-left : 120px;
-  margin-bottom : 15px;
+  margin-left : 30vw;
+  margin-bottom : 1.5vh;
   width: 100%;
   .star_icon {
     display: inline-flex;
-    margin-right: 1px;
+    margin-right: 0.2vw;
   }
 `
 
@@ -100,50 +109,50 @@ export const ImageContainer = styled.div`
   align-items: center;
 
   img {
-    margin-right: 5px;
+    margin-right: 1vw;
   }
 `
 
 export const MapInfo = styled.div`
-  margin-top : 18px;
+  margin-top : 2vh;
 `
 export const DetailTitle = styled.div`
-  margin-left : 15px;
-  font-size : 15px;
+  margin-left : 3.5vw;
+  font-size : 0.9em;
   color : #B1B1B1;
 `
 export const DetailContent = styled.div`
-  margin-left : 15px;
-  margin-top : 8px;
-  font-size : 13px;
+  margin-left : 3.5vw;
+  margin-top : 0.8vh;
+  font-size : 0.8em;
 `
 export const Map = styled.div`
-  margin-top : 10px;
+  margin-top : 1vh;
 `
 export const LocationData = styled.div`
 `
 export const DataContainer = styled.div`
-  margin-top : 20px;
+  margin-top : 2vh;
 `
 export const Button1 = styled.div`
-  width : 191px;
-  height : 42px;
-  font-size : 15px;
-  border: 1px solid #1FBC70;
-  border-radius: 20px;
+  width : 45vw;
+  height : 4.5vh;
+  font-size : 0.9em;
+  border: 0.2vw solid #1FBC70;
+  border-radius: 7vw;
   text-align : center;
   display: flex;
   align-items: center;
   justify-content : center; 
 `
 export const Button2 = styled.div`
-  margin-left : 10px;
-  width : 191px;
-  height : 42px;
-  font-size : 15px;
+  margin-left : 2vw;
+  width : 45vw;
+  height : 4.5vh;
+  font-size : 0.9em;
   color : #FFFFFF;
   background-color : #1FBC70;
-  border-radius: 20px;
+  border-radius: 7vw;
   text-align : center;
   display: flex;
   align-items: center;
@@ -151,7 +160,7 @@ export const Button2 = styled.div`
 `
 export const ButtonContainer = styled.div`
   display : flex;
-  margin-top : 50px;
-  margin-left : 15px;
-  margin-bottom : 40px;
+  margin-top : 5vh;
+  margin-left : 4vw;
+  margin-bottom : 4vh;
   `

@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as A from './Main.style';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import facility1 from "../Image/MainImage/facility1.png";
+import NavigationBar from "../Navi/NavigationBar";
+import { useLocation } from 'react-router-dom';
 import facility2 from "../Image/MainImage/facility2.png";
 import facility3 from "../Image/MainImage/facility3.png";
-
+import Modal from '../Modal/Modal';
 
 function Main() {
+    const location = useLocation();
+    const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('전체');
     const navigate = useNavigate();
+    useEffect(() => {
+        if (location.state && location.state.showModal) {
+          setIsReserveModalOpen(true);
+        }
+      }, [location.state]);
 
     const categories = ['#조용한', '#회의', '#팀플', '#스터디룸', '#프린트'];
 
@@ -41,7 +49,13 @@ function Main() {
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
-      };
+    };
+    const handleReturnClick = () => {
+        navigate('/return');
+    };
+    const handleAlarmClick = () => {
+        navigate('/Alarm');
+    };
 
     const facilityData = [
         { id: 1, title: "11호관 커피", poster_path: facility2 },
@@ -52,7 +66,7 @@ function Main() {
     ];
 
     return (
-        <div className = "MainBody">
+        <A.Body>
             <A.Text>
                 <A.GreenText>김연지</A.GreenText>님, 오늘은
                 <br></br>
@@ -84,7 +98,11 @@ function Main() {
                     ))}
                 </A.CustomSlider>
             </A.container>
-        </div>
+            <A.Button1 onClick = {handleReturnClick}>반납하기</A.Button1>
+            <A.Button1 onClick = {handleAlarmClick}>알람</A.Button1>
+            <NavigationBar />
+            <Modal isOpen={isReserveModalOpen} onClose={() => setIsReserveModalOpen(false)} />  
+        </A.Body>
     );
 }
 

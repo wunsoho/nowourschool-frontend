@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import Slider from 'react-slick';
 
+export const Body = styled.div`
+  overflow-x : hidden;
+  max-width: 960px;
+  width: 100%;
+`
 export const component = styled.div`
     background-color: #ffffff;
     margin-top: 20px;
@@ -44,3 +49,17 @@ export const button = styled.div`
 export const container = styled.div`
     margin-top : 5px;   
 `   
+export const Button1 = styled.div`
+margin-top : 10vh;
+margin-left : auto;
+margin-right : auto;
+width : 45vw;
+height : 4.5vh;
+font-size : 0.9em;
+border: 0.2vw solid #1FBC70;
+border-radius: 7vw;
+text-align : center;
+display: flex;
+align-items: center;
+justify-content : center; 
+`

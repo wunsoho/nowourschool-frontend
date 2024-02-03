@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import * as B from './Detail1.style';
 import 'slick-carousel/slick/slick.css';
@@ -11,6 +12,10 @@ import PrevArrow_img from '../Image/DetailImage/PrevArrow.png';
 import Map from '../Detail/Map';
 
 function Detail1() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [reservationStatus, setReservationStatus] = useState(false);
+
   const settings1 = {
     infinite: true,
     speed: 500,
@@ -71,14 +76,34 @@ function Detail1() {
         window.removeEventListener('scroll', handleScroll);
       };
     }, []);
+    const onClickButton1 = () => {
+      if (reservationStatus) {
+        // 반납 기능 처리
+        console.log('예약 반납 중');
+      } else {
+        navigate(`/status`);
+      }
+    };
+
+    const onClickButton2 = () => {
+      if (reservationStatus) {
+        // 연장 기능 처리
+        console.log('예약 연장 중');
+      } else {
+        navigate(`/facility/${id}/reserve1`);
+      }
+    };
+    const onClickReviewButton = () => {
+      navigate(`/review`);
+    }
   return (
-    <div className="Detail1Body">
+    <B.Body>
       <B.ImageSlider>
         <Slider {...settings1}>
           {fac_detailData.map((item) => (
             <div key={item.id}>
               <div className="slide-container">
-                <img src={item.poster_path} alt={`facility${item.id}`} />
+                <img className = "img" src={item.poster_path} alt={`facility${item.id}`} />
               </div>
             </div>
           ))}
@@ -112,7 +137,7 @@ function Detail1() {
               <B.StarText>4.1</B.StarText>
           </B.StarRateWrap>
           <B.ReviewButton>
-            <button className = "button1">{'리뷰 86개 전체보기 >'}</button>
+            <button className = "button1" onClick = {onClickReviewButton}>{'리뷰 86개 전체보기 >'}</button>
           </B.ReviewButton>
         </B.ReviewWrap>
       </B.All>
@@ -170,10 +195,14 @@ function Detail1() {
         ))}
       </B.LocationData>
       <B.ButtonContainer>
-        <B.Button1>예약현황</B.Button1>
-        <B.Button2>예약하기</B.Button2>
+      <B.Button1 key={1} onClick={() => onClickButton1()}>
+          {reservationStatus ? '반납하기' : '예약현황'}
+        </B.Button1>
+        <B.Button2 key={2} onClick={() => onClickButton2()}>
+          {reservationStatus ? '연장하기' : '예약하기'}
+        </B.Button2>
       </B.ButtonContainer>
-    </div>
+    </B.Body>
   );
 }
 
