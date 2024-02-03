@@ -12,6 +12,7 @@ function SearchResults(){
                 display:"inline-block",
                 width:"70vw",
                 height:"5.5vh",
+                marginTop:"3vh",
                 marginBottom:"3vh",
                 marginLeft:"1.5vw",
                 paddingLeft:"3.5vw",
@@ -31,7 +32,7 @@ function SearchResults(){
                 <img src={search2} alt="검색" style={{float:"right", width:"5vw", marginTop:"1.5vh", marginRight:"4vw"}}></img>
             </div>
             <Link to="/search">
-                <p style={{float:"right", marginRight:"7vw",marginTop:"1.4vh"}}>취소</p>
+                <p style={{float:"right", marginRight:"7vw",marginTop:"4.4vh"}}>취소</p>
             </Link>
         </div>
         <div style={{display:"table",marginBottom:"2vh"}}>
