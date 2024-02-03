@@ -13,7 +13,7 @@ function Review(){
     }
 
     return(
-        <div style={{height:"100vh"}}>
+        <div style={{height:"92vh"}}>
             <h3 style={{display:"flex",justifyContent:"center"}}>리뷰 관리</h3>
 
             <div style={{backgroundColor: "#FFFFFF", width:"96vw", height:"6vh"}}>

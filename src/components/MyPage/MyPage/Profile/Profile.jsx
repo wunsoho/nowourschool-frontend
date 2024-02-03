@@ -1,8 +1,15 @@
 import React from "react";
-import ProfileImg from "../Image/ProfileImg.png";
-import hwasalpyo from "../Image/hwasalpyo.png";
+import ProfileImg from "../../Image/ProfileImg.png";
+import hwasalpyo from "../../Image/hwasalpyo.png";
+import { useNavigate } from "react-router-dom";
 
 function Profile(){
+
+    const navigate = useNavigate();
+    function handleClick(){
+        navigate('/personalinfo');
+    }
+
     return(
         <div style={{
             display:"flex",
@@ -25,8 +32,8 @@ function Profile(){
             }}>
                 <p style={{fontSize:"22px",fontWeight:"700",letterSpacing:"-0.5px"}}>홍길동</p>
                 <p style={{color:"#414247", fontSize:"16px",fontWeight:"550",letterSpacing:"-0.1em"}}>디지털콘텐츠디자인학과 / 3학년</p>
-            </div>  
-            <img src={hwasalpyo} alt="nexttag" style={{height:"3vh",marginLeft:"5vw",marginTop:"2.6vh"}}/>
+            </div>
+            <img onClick={handleClick} src={hwasalpyo} alt="nexttag" style={{height:"3vh",marginLeft:"5vw",marginTop:"2.6vh"}}/>
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function QnA(){
     return(
-        <div style={{height:"100vh", backgroundColor:"#f1f1f1"}}>
+        <div style={{height:"92vh", backgroundColor:"#f1f1f1"}}>
             <div style={{paddingTop:"2vh"}}>
                 <Link to="/mypage">
                     <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"2.5vh", marginLeft:"2vw"}}/>

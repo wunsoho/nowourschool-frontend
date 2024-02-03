@@ -1,11 +1,11 @@
 import React from "react";
-import Profile from "./Profile";
+import Profile from "./Profile/Profile";
 import PageFunctions from "./PageFunctions";
 
 function MyPage(){
     return(
     <div style={{
-        height:"100vh"
+        height:"92vh"
     }}>
         <Profile/>
         <PageFunctions/>

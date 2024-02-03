@@ -4,7 +4,7 @@ import hwasalpyo2 from "../../../../MainPage/Image/hwasalpyo2.png";
 
 function ChangePassword(){
     return(
-        <div style={{height:"100vh"}}>
+        <div style={{height:"92vh"}}>
             <div style={{paddingTop:"2vh"}}>
                 <Link to="/mypage">
                     <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"2.5vh", marginLeft:"4vw"}}/>
@@ -29,8 +29,8 @@ function ChangePassword(){
                 </div>
             </div>
             
-            {/* disabled 속성 이용해서 비밀번호 입력후에 맞으면 disabled 속성이 해제되도록 하는 기능 추가 */}
-            <button type="submit" style={{position:"relative",width:"92vw",height:"7vh",marginTop:"55vh",marginLeft:"2vw",fontWeight:"700",fontSize:"17px",border:"0",backgroundColor:"#bbbbbb",borderRadius:"4.7vw",boxShadow:"none"}}>확인</button>
+            {/*useState사용해서 disabled 속성 이용해서 비밀번호 입력후에 맞으면 disabled 속성이 해제되도록 하는 기능 추가 */}
+            <button type="submit" style={{position:"relative",width:"92vw",height:"7vh",marginTop:"45vh",marginLeft:"2vw",fontWeight:"700",fontSize:"17px",border:"0",backgroundColor:"#bbbbbb",borderRadius:"4.7vw",boxShadow:"none"}}>확인</button>
         </div>
     );
 }

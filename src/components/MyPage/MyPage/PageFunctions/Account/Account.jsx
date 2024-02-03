@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Account(){
     return(
-        <div style={{height:"100vh",lineHeight:"2.5vh",backgroundColor:"#F1F1F1"}}>
+        <div style={{height:"92vh",lineHeight:"2.5vh",backgroundColor:"#F1F1F1"}}>
             <div style={{paddingTop:"2vh"}}>
                 <Link to="/mypage">
                     <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"2.5vh", marginLeft:"2vw"}}/>

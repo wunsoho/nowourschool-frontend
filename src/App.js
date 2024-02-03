@@ -24,6 +24,7 @@ import QnA from "./components/MyPage/MyPage/PageFunctions/QnA";
 import Review from "./components/MyPage/MyPage/PageFunctions/Review";
 import Account from "./components/MyPage/MyPage/PageFunctions/Account/Account";
 import ChangePassword from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword";
+import Personalnfo from "./components/MyPage/MyPage/Profile/PersonalInfo";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="/review" element={<Review/>}/>
             <Route path="/account" element={<Account/>}/>
             <Route path="/changepassword" element={<ChangePassword/>}/>
+            <Route path="/personalinfo" element={<Personalnfo/>}/>
           </Routes>
       </BrowserRouter>
     </div>
