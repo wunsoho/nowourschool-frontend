@@ -1,5 +1,6 @@
 import React from "react";
 import hwasalpyo2 from "../../../MainPage/Image/hwasalpyo2.png";
+import PlusMark from "../../Image/+.png";
 import { Link } from "react-router-dom";
 
 function Personalnfo(){
@@ -13,7 +14,9 @@ function Personalnfo(){
             </div>
 
             <div style={{width:"35vw",height:"35vw",marginLeft:"34vw",backgroundColor:"#f1f1f1",borderRadius:"20vw"}}>
-                <div style={{float:"right",width:"8.5vw",height:"8.5vw",marginTop:"12vh",marginRight:"2vw",backgroundColor:"#bbbbbb",borderRadius:"5vw"}}></div>
+                <div style={{float:"right",width:"8.5vw",height:"8.5vw",marginTop:"12vh",marginRight:"2vw",backgroundColor:"#bbbbbb",borderRadius:"5vw"}}>
+                    <img src={PlusMark} alt="플러스" style={{marginLeft:"2.4vw",marginTop:"1.1vh"}}/>
+                </div>
             </div>
 
             <div style={{display:"table"}}>

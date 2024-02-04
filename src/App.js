@@ -25,6 +25,9 @@ import Review from "./components/MyPage/MyPage/PageFunctions/Review";
 import Account from "./components/MyPage/MyPage/PageFunctions/Account/Account";
 import ChangePassword from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword";
 import Personalnfo from "./components/MyPage/MyPage/Profile/PersonalInfo";
+import Complete1 from "./components/MyPage/MyPage/PageFunctions/Account/Complete1";
+import Complete2 from "./components/MyPage/MyPage/PageFunctions/Account/Complete2";
+import Withdrawal from "./components/MyPage/MyPage/PageFunctions/Account/Withdrawal";
 
 function App() {
   return (
@@ -55,6 +58,9 @@ function App() {
             <Route path="/review" element={<Review/>}/>
             <Route path="/account" element={<Account/>}/>
             <Route path="/changepassword" element={<ChangePassword/>}/>
+            <Route path="/changepassword/complete" element={<Complete1/>}/>
+            <Route path="/withdraw" element={<Withdrawal/>}/>
+            <Route path="/withdraw/complete" element={<Complete2/>}/>
             <Route path="/personalinfo" element={<Personalnfo/>}/>
           </Routes>
       </BrowserRouter>

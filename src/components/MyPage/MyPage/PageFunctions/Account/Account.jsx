@@ -21,12 +21,11 @@ function Account(){
                 marginTop:"8vh"
             }}>
                 <img src={ChangePassword} alt="비밀번호 변경" style={{float:"left",marginLeft:"8vw",marginRight:"3vw"}}/>
-                <Link to="/changepassword">
+                <Link to="/changepassword" style={{textDecoration:"none"}}>
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",
-                    letterSpacing:"-0.4vw",
-                    textDecoration: "none"}}>비밀번호 변경</h4>
+                    letterSpacing:"-0.4vw"}}>비밀번호 변경</h4>
                 </Link>
             </div>
             
@@ -35,12 +34,11 @@ function Account(){
                 borderBottom: "0.5px solid #BBBBBB"
             }}>
                 <img src={AccountBox} alt="회원 탈퇴" style={{float:"left",marginLeft:"8vw",marginRight:"3vw"}}/>
-                <Link to="/outaccount">
+                <Link to="/withdraw" style={{textDecoration:"none"}}>
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",
-                    letterSpacing:"-0.4vw",
-                    textDecoration:"none"}}>회원 탈퇴</h4>
+                    letterSpacing:"-0.4vw"}}>회원 탈퇴</h4>
                 </Link>
             </div>
             
@@ -49,12 +47,11 @@ function Account(){
                 borderBottom: "0.5px solid #BBBBBB"
             }}>
                 <img src={LogOut} alt="로그아웃" style={{float:"left",marginLeft:"8vw",marginRight:"3vw"}}/>
-                <Link to="/logout">
+                <Link to="/logout" style={{textDecoration:"none"}}>
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",
-                    letterSpacing:"-0.4vw",
-                    textDecoration: "none"}}>로그아웃</h4>
+                    letterSpacing:"-0.4vw"}}>로그아웃</h4>
                 </Link>
             </div>
         </div>
