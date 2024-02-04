@@ -21,13 +21,14 @@ import SearchResults from "./components/MainPage/SearchTap/SearchResults";
 import PlaceStates from "./components/MainPage/PopularFacilities/PlaceStates";
 import Booking from "./components/MyPage/MyPage/PageFunctions/Booking";
 import QnA from "./components/MyPage/MyPage/PageFunctions/QnA";
-import Review from "./components/MyPage/MyPage/PageFunctions/Review";
+import Review from "./components/MyPage/MyPage/PageFunctions/Review/Review";
 import Account from "./components/MyPage/MyPage/PageFunctions/Account/Account";
 import ChangePassword from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword";
 import Personalnfo from "./components/MyPage/MyPage/Profile/PersonalInfo";
 import Complete1 from "./components/MyPage/MyPage/PageFunctions/Account/Complete1";
 import Complete2 from "./components/MyPage/MyPage/PageFunctions/Account/Complete2";
 import Withdrawal from "./components/MyPage/MyPage/PageFunctions/Account/Withdrawal";
+import WriteReview from "./components/MyPage/MyPage/PageFunctions/Review/WriteReview";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
             <Route path="/booking" element={<Booking/>}/>
             <Route path="/qna" element={<QnA/>}/>
             <Route path="/review" element={<Review/>}/>
+            <Route path="/review/writereview" element={<WriteReview/>}/>
             <Route path="/account" element={<Account/>}/>
             <Route path="/changepassword" element={<ChangePassword/>}/>
             <Route path="/changepassword/complete" element={<Complete1/>}/>
