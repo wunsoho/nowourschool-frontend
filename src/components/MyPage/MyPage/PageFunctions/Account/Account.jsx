@@ -3,9 +3,15 @@ import hwasalpyo2 from "../../../../MainPage/Image/hwasalpyo2.png";
 import ChangePassword from "../../../Image/ChangePassword.png";
 import AccountBox from "../../../Image/AccountBox.png";
 import LogOut from "../../../Image/Logout.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Account(){
+
+    const navigate = useNavigate();
+    const BackHome = () =>{
+        navigate('/');
+    }
+
     return(
         <div style={{height:"92vh",lineHeight:"2.5vh",backgroundColor:"#F1F1F1"}}>
             <div style={{paddingTop:"2vh"}}>
@@ -47,12 +53,7 @@ function Account(){
                 borderBottom: "0.5px solid #BBBBBB"
             }}>
                 <img src={LogOut} alt="로그아웃" style={{float:"left",marginLeft:"8vw",marginRight:"3vw"}}/>
-                <Link to="/logout" style={{textDecoration:"none"}}>
-                    <h4 style={{
-                    marginLeft: "4.3vw",
-                    color: "black",
-                    letterSpacing:"-0.4vw"}}>로그아웃</h4>
-                </Link>
+                <h4 onClick={BackHome} style={{marginLeft: "4.3vw",color: "black",letterSpacing:"-0.4vw"}}>로그아웃</h4>
             </div>
         </div>
     );

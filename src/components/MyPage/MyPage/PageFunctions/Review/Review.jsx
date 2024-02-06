@@ -49,7 +49,7 @@ function Review(){
     return(
         <div style={{height:"92vh"}}>
             <div style={{paddingTop:"2vh"}}>
-                <Link to="/">
+                <Link to="/mypage">
                     <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"2.5vh", marginLeft:"2vw"}}/>
                 </Link>
                 <h3 style={{display:"flex",justifyContent:"center",fontWeight:"700",fontSize:"20px",letterSpacing:"-0.4vw"}}>리뷰 관리</h3>
@@ -114,7 +114,7 @@ function Review(){
                     </div>
                 </div>
             </R.TableBox2>
-            
+
             <R.TableBox2 style={{display:`${PageDisplay2}`}}>
                 <p style={{float:"left", margin:"2vw",marginLeft:"5vw",stroke: "var(--gray3, #F1F1F1)"}}>작성일 <span style={{fontWeight:"600"}}>2023.06.17</span></p><br/><br/>
                 <div
