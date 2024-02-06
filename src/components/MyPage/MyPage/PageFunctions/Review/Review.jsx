@@ -5,6 +5,9 @@ import hwasalpyo2 from "../../../../MainPage/Image/hwasalpyo2.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as R from "./Review.style";
+import seeMore from "../../../Image/seeMore.png";
+import x from "../../../Image/x2.png";
+import "../Review/ReviewModal/styles.css";
 
 function Review(){
 
@@ -12,6 +15,15 @@ function Review(){
 
     function handleClick1(){
         navigate('/review/writereview');
+    }
+
+    const [Modal, setModal] = useState("none");
+
+    const changeModalState1 = () => {
+        setModal("flex");
+    }
+    const changeModalState2 = () => {
+        setModal("none");
     }
 
     const [PageDisplay1,setPageDisplay1] = useState("table");
@@ -92,6 +104,37 @@ function Review(){
                 <div style={{float:"left", marginTop:"1vh",lineHeight:"5vw"}}>
                     <p style={{fontWeight:"500", fontSize:"17px",lineHeight:"0",letterSpacing:"-0.3vw"}}>학생회관 소강당</p>
                     <p style={{marginBottom:"0",fontSize:"12px",letterSpacing:"-0.3vw"}}>동아리 공연때문에 대여하였습니다 만족합니다</p>
+                </div>
+                <img onClick={changeModalState1} src={seeMore} alt="더보기" style={{float:"right",margin:"3vw",marginTop:"4vw",marginRight:"4vw"}}/>
+                <div className="front-modal" style={{display: `${Modal}`}}>
+                    <div className="modal">
+                        <img onClick={changeModalState2} src={x} alt="닫기" style={{float:"right",width:"4vw",height:"4vw",margin:"5vw"}}/>
+                        <button style={{width:"50%",height:"4.5vh",marginLeft:"2vw",marginTop:"4vh",fontSize:"15px",textAlign:"left",background:"none",border:"0"}}>리뷰 수정</button><br/>
+                        <button style={{width:"50%",height:"4.5vh",marginLeft:"2vw",marginTop:"1vh",fontSize:"15px",textAlign:"left",background:"none",border:"0"}}>리뷰 삭제</button>
+                    </div>
+                </div>
+            </R.TableBox2>
+            
+            <R.TableBox2 style={{display:`${PageDisplay2}`}}>
+                <p style={{float:"left", margin:"2vw",marginLeft:"5vw",stroke: "var(--gray3, #F1F1F1)"}}>작성일 <span style={{fontWeight:"600"}}>2023.06.17</span></p><br/><br/>
+                <div
+                style={{
+                width: "100%",
+                textAlign: "center",
+                borderBottom: "0.5px solid #f1f1f1",
+                }}/>
+                <img src={SoGangDang} alt="소강당" style={{float:"left", width: "15vw", margin:"3vw",marginTop:"3vw"}}/>
+                <div style={{float:"left", marginTop:"1vh",lineHeight:"5vw"}}>
+                    <p style={{fontWeight:"500", fontSize:"17px",lineHeight:"0",letterSpacing:"-0.3vw"}}>학생회관 소강당</p>
+                    <p style={{marginBottom:"0",fontSize:"12px",letterSpacing:"-0.3vw"}}>동아리 공연때문에 대여하였습니다 만족합니다</p>
+                </div>
+                <img onClick={changeModalState1} src={seeMore} alt="더보기" style={{float:"right",margin:"3vw",marginTop:"4vw",marginRight:"4vw"}}/>
+                <div className="front-modal" style={{display: `${Modal}`}}>
+                    <div className="modal">
+                        <img onClick={changeModalState2} src={x} alt="닫기" style={{float:"right",width:"4vw",height:"4vw",margin:"5vw"}}/>
+                        <button style={{width:"50%",height:"4.5vh",marginLeft:"2vw",marginTop:"4vh",fontSize:"15px",textAlign:"left",background:"none",border:"0"}}>리뷰 수정</button><br/>
+                        <button style={{width:"50%",height:"4.5vh",marginLeft:"2vw",marginTop:"1vh",fontSize:"15px",textAlign:"left",background:"none",border:"0"}}>리뷰 삭제</button>
+                    </div>
                 </div>
             </R.TableBox2>
         </div>
