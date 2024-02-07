@@ -27,7 +27,7 @@ function Account(){
                 marginTop:"8vh"
             }}>
                 <img src={ChangePassword} alt="비밀번호 변경" style={{float:"left",marginLeft:"8vw",marginRight:"3vw"}}/>
-                <Link to="/changepassword" style={{textDecoration:"none"}}>
+                <Link to="/changepassword1" style={{textDecoration:"none"}}>
                     <h4 style={{
                     marginLeft: "4.3vw",
                     color: "black",

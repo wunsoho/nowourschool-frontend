@@ -23,7 +23,8 @@ import Booking from "./components/MyPage/MyPage/PageFunctions/Booking";
 import QnA from "./components/MyPage/MyPage/PageFunctions/QnA";
 import Review from "./components/MyPage/MyPage/PageFunctions/Review/Review";
 import Account from "./components/MyPage/MyPage/PageFunctions/Account/Account";
-import ChangePassword from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword";
+import ChangePassword1 from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword1";
+import ChangePassword2 from "./components/MyPage/MyPage/PageFunctions/Account/ChangePassword2";
 import Personalnfo from "./components/MyPage/MyPage/Profile/PersonalInfo";
 import Complete1 from "./components/MyPage/MyPage/PageFunctions/Account/Complete1";
 import Complete2 from "./components/MyPage/MyPage/PageFunctions/Account/Complete2";
@@ -59,7 +60,8 @@ function App() {
             <Route path="/review" element={<Review/>}/>
             <Route path="/review/writereview" element={<WriteReview/>}/>
             <Route path="/account" element={<Account/>}/>
-            <Route path="/changepassword" element={<ChangePassword/>}/>
+            <Route path="/changepassword1" element={<ChangePassword1/>}/>
+            <Route path="/changepassword2" element={<ChangePassword2/>}/>
             <Route path="/changepassword/complete" element={<Complete1/>}/>
             <Route path="/withdraw" element={<Withdrawal/>}/>
             <Route path="/withdraw/complete" element={<Complete2/>}/>
