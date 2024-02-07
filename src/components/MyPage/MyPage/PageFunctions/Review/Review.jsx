@@ -13,9 +13,15 @@ function Review(){
 
     const navigate = useNavigate();
 
-    function handleClick1(){
-        navigate('/review/writereview');
+    const onClickWrite = () =>{
+        navigate('/review/writereview',{
+            state: {
+                img1: {SoGangDang},
+                img2: {Openclass}
+            }
+        })
     }
+
 
     const [Modal, setModal] = useState("none");
 
@@ -25,9 +31,14 @@ function Review(){
     const changeModalState2 = () => {
         setModal("none");
     }
+    
+    const [display, setDisplay] = useState();
+
+    const onClickSeeMore = () => {
+        setDisplay('none');
+    }
 
     const [PageDisplay1,setPageDisplay1] = useState("table");
-
     const [PageDisplay2,setPageDisplay2] = useState("none");
 
     const [BottomControl1,setBottomControl1] = useState("2.5px solid #1FBC70");
@@ -69,11 +80,11 @@ function Review(){
                 borderBottom: "0.5px solid #f1f1f1",
                 }}/>
                 <img src={SoGangDang} alt="소강당" style={{float:"left", width: "30vw", margin:"3vw",marginTop:"4vw"}}/>
-                <div style={{float:"left", marginTop:"3vh",marginRight:"10vw",lineHeight:"5vw"}}>
+                <div id="box1" style={{float:"left", marginTop:"3vh",marginRight:"10vw",lineHeight:"5vw"}}>
                     <p style={{fontWeight:"600", fontSize:"20px",letterSpacing:"-0.4vw",lineHeight:"0"}}>학생회관 소강당</p>
                     <p style={{marginBottom:"3vw",letterSpacing:"-0.3vw"}}>22호관 지하 1F</p>
                 </div>
-                <R.ReviewButton to="/writereview" onClick={handleClick1}>리뷰 작성</R.ReviewButton>
+                <R.ReviewButton to="/writereview" onClick={onClickWrite}>리뷰 작성</R.ReviewButton>
             </R.TableBox1>
 
             <R.TableBox1 style={{display:`${PageDisplay1}`}}>
@@ -89,7 +100,7 @@ function Review(){
                     <p style={{fontWeight:"600", fontSize:"20px",letterSpacing:"-0.4vw",lineHeight:"0"}}>열린 열람실</p>
                     <p style={{marginBottom:"3vw",letterSpacing:"-0.3vw"}}>구아산 도서관</p>
                 </div>
-                <R.ReviewButton to="/writereview" onClick={handleClick1}>리뷰 작성</R.ReviewButton>
+                <R.ReviewButton to="/writereview" onClick={onClickWrite}>리뷰 작성</R.ReviewButton>
             </R.TableBox1>
 
             <R.TableBox2 style={{display:`${PageDisplay2}`}}>
@@ -116,18 +127,18 @@ function Review(){
             </R.TableBox2>
 
             <R.TableBox2 style={{display:`${PageDisplay2}`}}>
-                <p style={{float:"left", margin:"2vw",marginLeft:"5vw",stroke: "var(--gray3, #F1F1F1)"}}>작성일 <span style={{fontWeight:"600"}}>2023.06.17</span></p><br/><br/>
-                <div
-                style={{
-                width: "100%",
-                textAlign: "center",
-                borderBottom: "0.5px solid #f1f1f1",
-                }}/>
-                <img src={SoGangDang} alt="소강당" style={{float:"left", width: "15vw", margin:"3vw",marginTop:"3vw"}}/>
-                <div style={{float:"left", marginTop:"1vh",lineHeight:"5vw"}}>
-                    <p style={{fontWeight:"500", fontSize:"17px",lineHeight:"0",letterSpacing:"-0.3vw"}}>학생회관 소강당</p>
-                    <p style={{marginBottom:"0",fontSize:"12px",letterSpacing:"-0.3vw"}}>동아리 공연때문에 대여하였습니다 만족합니다</p>
-                </div>
+                    <p style={{float:"left", margin:"2vw",marginLeft:"5vw",stroke: "var(--gray3, #F1F1F1)"}}>작성일 <span style={{fontWeight:"600"}}>2023.06.17</span></p><br/><br/>
+                    <div
+                    style={{
+                    width: "100%",
+                    textAlign: "center",
+                    borderBottom: "0.5px solid #f1f1f1",
+                    }}/>
+                    <img src={SoGangDang} alt="소강당" style={{float:"left", width: "15vw", margin:"3vw",marginTop:"3vw"}}/>
+                    <div style={{float:"left", marginTop:"1vh",lineHeight:"5vw"}}>
+                        <p style={{fontWeight:"500", fontSize:"17px",lineHeight:"0",letterSpacing:"-0.3vw"}}>학생회관 소강당</p>
+                        <p style={{marginBottom:"0",fontSize:"12px",letterSpacing:"-0.3vw"}}>동아리 공연때문에 대여하였습니다 만족합니다</p>
+                    </div>
                 <img onClick={changeModalState1} src={seeMore} alt="더보기" style={{float:"right",margin:"3vw",marginTop:"4vw",marginRight:"4vw"}}/>
                 <div className="front-modal" style={{display: `${Modal}`}}>
                     <div className="modal">

@@ -1,6 +1,10 @@
 import React from 'react';
 import * as S from "../ProfileBox/Style/profile.style";
+import { useLocation } from 'react-router-dom';
 function Profile() {
+
+    const {state} = useLocation();
+
     return (
             <S.ProfileBox>
                 <S.Title>

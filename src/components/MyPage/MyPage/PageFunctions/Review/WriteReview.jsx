@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import hwasalpyo2 from "../../../../MainPage/Image/hwasalpyo2.png";
 import SoGangDang from "../../../Image/SoGangDang.png";
 import StarRating from "./StarRating/StarRating";
@@ -7,83 +7,54 @@ import { useRef,useState } from "react";
 import Camera from "../../../Image/Camera.png";
 import styled from "styled-components";
 import axios from "axios";
-import { useDropzone } from "react-dropzone";
+import ImageUpload from "./PictureUpload/ImageUpload";
 
 function WriteReview(){
+
+    const {state} = useLocation();
+    
 
     const navigate = useNavigate();
     const handleClick = () => {
         navigate('/review');
     }
 
-    const ImageUploader = ({onImageUpload}) => {
-        // const onDrop = async (acceptedFiles) => {
-        //     try {
-        //       // FormData를 사용하여 이미지 파일을 서버로 전송합니다.
-        //       const formData = new FormData();
-        //       acceptedFiles.forEach((file) => {
-        //         formData.append('images', file);
-        //       });
-        
-        //       // 서버 업로드 endpoint를 설정합니다.
-        //       const response = await axios.post('http://your-server-endpoint/upload', formData, {
-        //         headers: {
-        //           'Content-Type': 'multipart/form-data',
-        //         },
-        //       });
-        
-        //       // 업로드된 이미지들의 URL을 받아와 상위 컴포넌트로 전달합니다.
-        //       const imageUrls = response.data.urls;
-        //       onImageUpload(imageUrls);
-        //     } catch (error) {
-        //       console.error('Error uploading images:', error);
-        //     }
-        //   };
-        
-        const onDrop = async (acceptedFiles) => {
-            try {
-                // 'acceptedFiles' 배열에 업로드된 파일들이 포함됩니다.
-                // 업로드된 이미지들을 상위 컴포넌트로 전달합니다.
-                onImageUpload(acceptedFiles);
-              } catch (error) {
-                console.error('Error uploading images:', error);
-            }
-        };
-
-        const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop});
-
-        return(
-            <div {...getRootProps()} style={dropzoneStyle}>
-                <input {...getInputProps()}/>
-                {
-                    isDragActive ?
-                    <p>이미지를 놓아주세요!</p>:
-                    <p>이미지를 여기에 끌어오거나 클릭하여 업로드하세요.</p>
-                }
-            </div>
-        );
-    };
-
-    const ImageGallery = ({images}) => {
-        return(
-            <div style={galleryStyle}>
-                {images.map((image, index) => {
-                    <img key={index} src={URL.createObjectURL(image)} accept="image/*" alt={`Uploaded ${index}`} style={imageStyle}/>
-                })}
-            </div>
-        );
-    };
-
-    const [uploadedImages, setUploadedImages] = useState([]);
-
-    const handleImageUpload = async (images) =>{
-        try {
-            // 업로드된 이미지들을 상태에 추가합니다.
-            setUploadedImages([...uploadedImages, ...images]);
-          } catch (error) {
-            console.error('Error updating images state:', error);
-        }
+    const [BackColor,setBackColor] = useState('#bbbbbb');
+    const [fontColor,setFontColor] = useState('black');
+    const ChangeState = () => {
+        setBackColor('#1FBC70');
+        setFontColor('white');
     }
+
+
+    const ImageUpload = () => {
+        const [images, setImages] = useState([]);
+      
+        const handleImageChange = (e) => {
+          const files = e.target.files;
+          const newImages = [];
+      
+          for (let i = 0; i < files.length; i++) {
+            const imageUrl = URL.createObjectURL(files[i]);
+            newImages.push(imageUrl);
+          }
+      
+          setImages([...images, ...newImages]);
+        };
+      
+        
+        return (
+          <div>
+            <div>
+              {images.map((image, index) => (
+                <img key={index} src={image} alt={`uploaded-${index}`} style={{ width: '25vw', height: '25vw',marginLeft:"2vw",marginRight:'2vw',borderRadius:"4vw" }} />
+              ))}
+            </div>
+            <ReviewText onKeyDown={ChangeState} type="text" placeholder="내용을 입력하세요."/>
+            <input type="file" accept="image/*" multiple onChange={handleImageChange}/>
+          </div>
+        );
+      };
 
     return(
         <div>
@@ -108,7 +79,7 @@ function WriteReview(){
             textAlign: "center"
             }}/>
                 <div style={{display:"table"}}>
-                    <img src={SoGangDang} alt="소강당" style={{float:"left", width: "15vw", margin:"3vw",marginTop:"3vh",borderRadius:"vw"}}/>
+                    <img src={state.img2["Openclass"]} alt="소강당" style={{float:"left", width: "15vw", margin:"3vw",marginTop:"3vh",borderRadius:"vw"}}/>
                     <div style={{float:"left", marginTop:"3vh",marginRight:"10vw",lineHeight:"5vw"}}>
                         <p style={{fontWeight:"600", fontSize:"16px",letterSpacing:"-0.4vw",lineHeight:"0"}}>학생회관 소강당</p>
                         <p style={{marginBottom:"3vw",letterSpacing:"-0.3vw"}}>22호관 지하 1F</p>
@@ -119,15 +90,10 @@ function WriteReview(){
                 </div>
                 
                 <div style={{borderTop: "0.5px solid #f1f1f1"}}>
-                    <div style={containerStyle}>
-                        <ImageUploader onImageUpload={handleImageUpload}/>
-                        <ImageGallery images={uploadedImages} />
-                    </div>
-                    <ReviewText type="text" placeholder="내용을 입력하세요."/>
-                    
+                    <ImageUpload/>
                 </div>
             </div>
-            <button onClick={handleClick} style={{width:"96vw",height:"6.5vh",marginTop:"2.5vh",backgroundColor:"#BBBBBB",fontSize:"16px",fontWeight:"700",border:"0",borderRadius:"5vw"}}>올리기</button>
+            <button onClick={handleClick} style={{width:"96vw",height:"6.5vh",marginTop:"2.5vh",backgroundColor:`${BackColor}`,color:`${fontColor}`,fontSize:"16px",fontWeight:"700",border:"0",borderRadius:"5vw"}}>올리기</button>
         </div>  
     );
 }
@@ -148,27 +114,3 @@ const ReviewText = styled.textarea`
     font-Family: pretendard;
     letter-Spacing: -0.2vw;
 `;
-
-const containerStyle = {
-    textAlign: 'center',
-    margin: '5vw'
-};
-
-const dropzoneStyle = {
-    border: '2px dashed #cccccc',
-    borderRadius: '1vw',
-    padding: '5vw',
-    cursor: 'pointer'
-};
-
-const galleryStyle = {
-    display: 'flex',
-    marginTop: '5vw',
-    justifyContent: 'center'
-};
-
-const imageStyle = {
-    maxWidth: '100%',
-    maxHeight: '37.5vw',
-    margin: '2.5vw'
-}

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import hwasalpyo2 from "../../../MainPage/Image/hwasalpyo2.png";
 import { Link } from "react-router-dom";
 
 function QnA(){
+
+    const [QuestionContent,setQuestionContent] = useState("");
+
     return(
         <div style={{height:"92vh", backgroundColor:"#f1f1f1"}}>
             <div style={{paddingTop:"2vh"}}>
@@ -21,7 +24,7 @@ function QnA(){
                 backgroundColor:"white"
             }}>
                 <input type="text" placeholder="제목을 입력해주세요." style={{width:"90vw",height:"5vh",marginTop:"8vh",paddingLeft:"5vw",border:"0",borderBottom: "0.5px solid #f1f1f1",fontSize:"16px",letterSpacing:"-0.2vw"}}/>
-                <textarea type="text" placeholder="문의 내용을 입력해주세요." style={{width:"86vw",height:"39.5vh",paddingTop:"2vh",paddingBottom:"30vw",paddingLeft:"5vw",paddingRight:"5vw",border:"0",fontSize:"15px",fontFamily:"pretendard",letterSpacing:"-0.2vw"}}/>
+                <textarea type="text" value={QuestionContent} onChange={(e) => setQuestionContent(e.target.value)} placeholder="문의 내용을 입력해주세요." style={{width:"86vw",height:"39.5vh",paddingTop:"2vh",paddingBottom:"30vw",paddingLeft:"5vw",paddingRight:"5vw",border:"0",fontSize:"15px",fontFamily:"pretendard",letterSpacing:"-0.2vw"}}/>
             </div>
         </div>
     );

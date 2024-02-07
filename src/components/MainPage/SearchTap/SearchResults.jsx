@@ -1,10 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import search2 from "../Image/search2.png";
 import StudentsSogangdang from "../Image/StudentsSogangdang.png";
 import hwasalpyo3 from "../Image/hwasalpyo3.png";
+import { queries } from "@testing-library/react";
+import x from "../Image/x.png";
 
 function SearchResults(){
+
+    const {state} = useLocation();
+    
+    const navigate = useNavigate();
+    const onClickSearch = () => {
+        navigate('');
+    }
+    
+    const [pointer1, setPointer1] = useState('none');
+    const [pointer2, setPointer2] = useState('');
+    const changeState = () =>{
+        setPointer1('');
+        setPointer2('none');
+    }
+
     return(
       <div style={{backgroundColor:"white", height:"100vh"}}>
         <div>
@@ -21,6 +38,7 @@ function SearchResults(){
                 borderRadius:"20px",
                 backgroundColor:"#f1f1f1"}}>
                 <input type="text" placeholder="검색어를 입력하세요" style={{
+                display:`${pointer1}`,
                 width:"50vw",
                 height:"4.7vh",
                 marginLeft:"1.5vw",
@@ -29,10 +47,23 @@ function SearchResults(){
                 fontSize:"16px",
                 backgroundColor:"#f1f1f1"
                 }}></input>
+                <p style={{
+                display:`${pointer2}`,
+                float:"left",
+                width:"50vw",
+                height:"3vh",
+                marginTop:"1vh",
+                marginBottom:"1vh",
+                marginLeft:"1.5vw",
+                paddingTop:"1vw",
+                border:"0",
+                fontSize:"16px",
+                backgroundColor:"#f1f1f1"}}>{state.title["queries"]}</p>
                 <img src={search2} alt="검색" style={{float:"right", width:"5vw", marginTop:"1.5vh", marginRight:"4vw"}}></img>
+                <img onClick={changeState} src={x} alt="지우기" style={{float:"right",width:"4vw",marginTop:"1.7vh",marginRight:"2.5vw"}}/>
             </div>
             <Link to="/search">
-                <p style={{float:"right", marginRight:"7vw",marginTop:"4.4vh"}}>취소</p>
+                <p style={{float:"right", marginRight:"7vw",marginTop:"4.4vh",textDecoration:"none"}}>취소</p>
             </Link>
         </div>
         <div style={{display:"table",marginBottom:"2vh"}}>
