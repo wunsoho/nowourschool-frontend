@@ -8,6 +8,8 @@ import Review from "./component/Review/Review";
 import Return from "./component/Return/Return";
 import './App.css';
 import Alarm from "./component/Alarm/Alarm";
+import History from "./component/History/History";
+import Camera from "./component/Return/Camera";
 
 function App() {  
   function setScreenSize() {
@@ -28,6 +30,8 @@ function App() {
         <Route path ="/review" element={<Review/>}/>
         <Route path ="/return" element={<Return/>}/>
         <Route path ="/Alarm" element={<Alarm/>}/>
+        <Route path ="/history" element={<History/>}/>
+        <Route path ="/Info" element={<Camera/>}/>
       </Routes>
     </div>
     </BrowserRouter>

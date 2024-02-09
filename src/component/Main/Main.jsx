@@ -10,27 +10,31 @@ import facility2 from "../Image/MainImage/facility2.png";
 import facility3 from "../Image/MainImage/facility3.png";
 import Modal from '../Modal/Modal';
 
+const ImgWrapper = styled.div`
+padding: 20px;
+text-align: center;
+
+& img {
+    margin: 0 auto;
+}
+`;
+
 function Main() {
     const location = useLocation();
     const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
+    const [modalClosed, setModalClosed] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('전체');
     const navigate = useNavigate();
+    
     useEffect(() => {
-        if (location.state && location.state.showModal) {
+        const storedModalClosed = localStorage.getItem('modalClosed');
+        setModalClosed(storedModalClosed === 'true');
+        if (location.state && location.state.showModal && !modalClosed) {
           setIsReserveModalOpen(true);
         }
-      }, [location.state]);
+      }, [location.state,  modalClosed]);
 
     const categories = ['#조용한', '#회의', '#팀플', '#스터디룸', '#프린트'];
-
-    const ImgWrapper = styled.div`
-    padding: 20px;
-    text-align: center;
-    
-    & img {
-        margin: 0 auto;
-    }
-    `;
 
     const settings = {
         dots: true,
@@ -44,6 +48,7 @@ function Main() {
 
     const onClickImg = (id) => {
         navigate(`/facility/${id}`, {
+            state : {id}
         });
     };
 
@@ -56,13 +61,19 @@ function Main() {
     const handleAlarmClick = () => {
         navigate('/Alarm');
     };
+    const handleHistoryClick = () => {
+        navigate('/history');
+    };
+    const handleInfoClick = () => {
+        navigate('/Info');
+    };
 
     const facilityData = [
         { id: 1, title: "11호관 커피", poster_path: facility2 },
         { id: 2, title: "휴게실", poster_path: facility2 },
         { id: 3, title: "북카페", poster_path: facility3 },
-        { id: 3, title: "북카페", poster_path: facility3 },
-        { id: 3, title: "북카페", poster_path: facility3 },
+        { id: 4, title: "북카페", poster_path: facility3 },
+        { id: 5, title: "북카페", poster_path: facility3 },
     ];
 
     return (
@@ -89,7 +100,7 @@ function Main() {
             <A.container>
                 <A.CustomSlider {...settings}>
                     {facilityData.map((item) => (
-                        <A.component key={item.id} onClick={() => onClickImg(item.id, item.title, item.poster_path)}>
+                        <A.component key={item.id} onClick={() => onClickImg(item.id)}>
                             <ImgWrapper>
                                 <img src={item.poster_path} alt={`facility${item.id}`}/>
                                 <div style={{ textAlign: 'center' }}>{item.title}</div>  
@@ -100,6 +111,8 @@ function Main() {
             </A.container>
             <A.Button1 onClick = {handleReturnClick}>반납하기</A.Button1>
             <A.Button1 onClick = {handleAlarmClick}>알람</A.Button1>
+            <A.Button1 onClick = {handleHistoryClick}>예약 내역</A.Button1>
+            <A.Button1 onClick = {handleInfoClick}>상세 정보</A.Button1>
             <NavigationBar />
             <Modal isOpen={isReserveModalOpen} onClose={() => setIsReserveModalOpen(false)} />  
         </A.Body>

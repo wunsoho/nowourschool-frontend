@@ -12,7 +12,7 @@ export const component = styled.div`
 `;
 export const CustomSlider = styled(Slider)`
 .slick-center {
-    transform: scale(1.2); // 가운데 슬라이드 크기 조절
+    transform: scale(1.2);
     transition: transform 0.5s;
 }
 

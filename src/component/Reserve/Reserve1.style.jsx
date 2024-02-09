@@ -7,95 +7,95 @@ export const Body = styled.div`
 `
 export const Back = styled.div`
     display : flex;
-    margin-top : 20px;
+    margin-top : 2.5vh;
     .Backbutton {
         background-color : #ffffff;
         border : none;
     }
     .title { 
-        font-size : 20px;
-        margin-left : 140px;
+        font-size : 1.3em;
+        margin-left : 35vw;
         font-weight : bold;
     }
 `
 export const DayTitle = styled.div`
     display : flex;
-    margin-top : 15px;
-    margin-left : 10px;
+    margin-top : 1.5vh;  
+    margin-left : 5vw;
     .title { 
-        margin-top : 3px;   
+        margin-top : 0.5vh;   
         font-weight : bold;
     }
 `
 export const InfoContainer = styled.div`
-    margin-top : 30px;
-    margin-left : 15px;
+    margin-top : 3vh;
+    margin-left : 5vw;
     display: flex;
     align-items : center;
 `
 export const InfoImg = styled.div`
 `
 export const Info = styled.div`
-    margin-bottom : 10px;
-    margin-left : 20px;
+    margin-bottom : 1vh;
+    margin-left : 5vw;
 `
 export const InfoTitle = styled.div`
     font-weight : bold;
-    font-size : 17px;
+    font-size : 1.1em;
 `
 export const InfoLocation = styled.div`
 `
 export const line = styled.div`
-    margin-top : 20px;
+    margin-top : 2vh;
     .hr{
         background:#e2e2e2;
-        height:1px;
+        height:0.1vh;
         border:0;
     }
 `
 
 export const CalContainer = styled.div`
-    width : 352px;
+    width : 85vw;
     margin-left : auto;
     margin-right : auto;
 `
 export const timeContainer = styled.div`
     display : flex;
     align-items: center;
-    margin-top : 40px;  
-    margin-left : 10px;
-    font-size : 14px;
+    margin-top : 5vh;  
+    margin-left : 3vw;
+    font-size : 0.8em;
     .title {
-        font-size : 17px;
+        font-size : 1.3em;
         font-weight : bold;
     }
     .img1 {
-        margin-left : 10px;
+        margin-left : 3vw;
     }
     .img2 { 
-        margin-left : 10px;
+        margin-left : 3vw;
     }
 `
 export const peopleContainer = styled.div`
     display : flex;
     align-items: center;
-    margin-top : 40px;
-    margin-left : 10px;
+    margin-top : 5vh;
+    margin-left : 3vw;
     .title {
-        font-size : 17px;
+        font-size : 1.1em;
         font-weight : bold;
     }
     .minus {
-        margin-left : 150px;
+        margin-left : 35vw;
         border : none;
         border-radius: 50%;
     }
     .counter {
-        margin-left : 30px;
+        margin-left : 8vw;
         font-weight : bold;
     }
     .plus {
-        margin-left : 30px;
+        margin-left : 8vw;
         border : none;
         border-radius: 50%;
     }
@@ -103,27 +103,27 @@ export const peopleContainer = styled.div`
 export const AlarmContainer = styled.div`
     display : flex;
     align-items: center;
-    margin-top : 40px;
-    margin-left : 10px;
+    margin-top : 5vh;
+    margin-left : 3vw;
     .title {
-        font-size : 17px;
+        font-size : 1.1em;
         font-weight : bold; 
     }
     .togle {
-        margin-top : 5px;
-        margin-left : 230px;
+        margin-top : 1vh;
+        margin-left : 55vw;
     }   
 `
 
 export const timeButton = styled.div`
-    margin-left : 10px;
+    margin-left : 3vw;
 `
 export const AlarmButton = styled.div`
-    margin-left : 10px;
+    margin-left : 3vw;
 `
 export const SlideContainer = styled.div`
     .slide-container {
-        margin-top : 10px;
+        margin-top : 1vh;
         width : 96px;
         height : 38px;
         margin-right: 15px;
@@ -137,12 +137,12 @@ export const SlideContainer = styled.div`
     }
 `
 export const ConfirmButton = styled.div`
-    margin-top : 200px;
-    margin-bottom : 50px;
-    width : 398px;
-    height : 64px;
+    margin-top : 7vh;
+    margin-bottom : 3vh ;
+    width : 95vw;
+    height : 7vh;
     background-color : #BBBBBB;
-    border-radius : 20px;
+    border-radius : 5vw;
     display : flex;
     align-items : center;
     justify-content : center;
@@ -150,7 +150,7 @@ export const ConfirmButton = styled.div`
     margin-left : auto;
     margin-right : auto;
     &.active {
-        background-color: #1FBC70; /* 버튼이 선택되었을 때의 배경 색상 */
-        color: #ffffff; /* 버튼이 선택되었을 때의 글자 색상 */
+        background-color: #1FBC70;
+        color: #ffffff; 
       }
 `

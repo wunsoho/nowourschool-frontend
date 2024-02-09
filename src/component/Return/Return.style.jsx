@@ -39,7 +39,6 @@ export const container2 = styled.div`
 margin-top : 1vh;
 margin-left : 3vw;
 margin-bottom : 1vh;
-display : flex;
 .caImg{
     margin-right : 3vw;
 }
@@ -54,6 +53,10 @@ display : flex;
     border-radius : 4vw;
     color : #ffffff;
     background-color : #5ABD8D;
+}
+.capture{
+    margin-left : 1vw;
+    border-radius : 1vw;
 }
 `
 export const imageContainer = styled.div`

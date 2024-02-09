@@ -14,6 +14,10 @@ const Modal = ({ isOpen, onClose  }) => {
     const handleStatusBottomClick = () => {
       navigate('/status')
     }
+    const handleClose = () => {
+      localStorage.setItem('modalClosed', 'true');
+      onClose();
+    };
   return (
     <>
       {isOpen && (
@@ -23,7 +27,7 @@ const Modal = ({ isOpen, onClose  }) => {
                 홍길동님의 {'<'}<B.GreenText>학생회관 소강당</B.GreenText>{'>'} <br/> 예약이 완료되었습니다.
               </B.ModalHeader>
               <B.ModalContent>
-                <span className="close-btn" onClick={onClose}>&times;</span>
+                <span className="close-btn" onClick={handleClose}>&times;</span>
                 <img className = "img" src = {ModalImg} alt = "모달이미지"/>
                 <B.ModalInfo>
                   <div className = "title">학생회관 소강당</div>

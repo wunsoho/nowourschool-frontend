@@ -73,12 +73,11 @@ export const ReviewSilder = styled.div`
   margin-top : 2.5vh;
   .review-slide{
     padding : 0.8em;
-    height : 13vh;
+    height : 10vh;
     border: 1px solid #ccc;
     box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8vw; 
     overflow: hidden; 
-    margin: 0 5px; 
   }
 `
 export const ReviewDate = styled.div`
@@ -86,6 +85,7 @@ export const ReviewDate = styled.div`
   color : #B1B1B1;
 `
 export const ReviewInfo = styled.div`
+  margin-left : 1vw;
 `
 export const StarRateWrap2 = styled.div`
   margin-left : 30vw;
@@ -101,15 +101,15 @@ export const ReviewContainer = styled.div`
 `
 
 export const ReviewDetail = styled.div`
-  font-size : 13px;
-  margin-top : 10px;
+  font-size : 0.8em;
+  margin-top : 1vh;
 `
 export const ImageContainer = styled.div`
   display: flex;
   align-items: center;
-
-  img {
-    margin-right: 1vw;
+  .img12{
+    height : 3vh;
+    border-radius : 3vw;
   }
 `
 
