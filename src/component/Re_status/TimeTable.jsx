@@ -4,45 +4,36 @@ import * as B from '../Re_status/TimeTable.style'
 
 const TimeTable = ({ courses }) => {
   const days = ['월', '화', '수', '목', '금', '토', '일'];
-  const timeSlots = [
-    '9',
-    '10',
-    '11',
-    '12',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-  ];
+  const timeSlots = ['9', '10', '11', '12', '1', '2', '3', '4', '5', '6', '7'];
 
   return (
     <div>
-        <B.Body>
+      <B.Body>
         <h2>예약현황</h2>
         <table className="timetable">
-            <thead>
+          <thead>
             <tr>
-                <th></th>
-                {days.map(day => (
+              <th></th>
+              {days.map(day => (
                 <th key={day}>{day}</th>
-                ))}
+              ))}
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             {timeSlots.map(timeSlot => (
-                <tr key={timeSlot}>
+              <tr key={timeSlot}>
                 <td>{timeSlot}</td>
                 {days.map(day => (
-                    <td key={day}>
+                  <td
+                    key={day}
+                    className={getCellStyle(day, timeSlot, courses)}
+                  >
                     <Course course={findCourse(day, timeSlot, courses)} />
-                    </td>
+                  </td>
                 ))}
-                </tr>
+              </tr>
             ))}
-            </tbody>
+          </tbody>
         </table>
       </B.Body>
     </div>
@@ -50,7 +41,11 @@ const TimeTable = ({ courses }) => {
 };
 
 const findCourse = (day, time, courses) => {
-  return courses.find(course => course.day === day && isTimeInRange(time, course.startTime, course.endTime));
+  return courses.find(
+    course =>
+      course.day === day &&
+      isTimeInRange(time, course.start_time.toString(), course.end_time.toString())
+  );
 };
 
 const isTimeInRange = (time, startTime, endTime) => {
@@ -65,4 +60,13 @@ const isTimeInRange = (time, startTime, endTime) => {
   return currentTimeInMinutes >= startTimeInMinutes && currentTimeInMinutes < endTimeInMinutes;
 };
 
+const getCellStyle = (day, time, courses) => {
+  const course = findCourse(day, time, courses);
+
+  if (course) {
+    return 'reserved';
+  } else {
+    return 'available';
+  }
+};
 export default TimeTable;

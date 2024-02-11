@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as A from './Main.style';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import NavigationBar from "../Navi/NavigationBar";
-import { useLocation } from 'react-router-dom';
 import facility2 from "../Image/MainImage/facility2.png";
 import facility3 from "../Image/MainImage/facility3.png";
-import Modal from '../Modal/Modal';
 
 const ImgWrapper = styled.div`
 padding: 20px;
@@ -20,19 +18,8 @@ text-align: center;
 `;
 
 function Main() {
-    const location = useLocation();
-    const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
-    const [modalClosed, setModalClosed] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('전체');
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        const storedModalClosed = localStorage.getItem('modalClosed');
-        setModalClosed(storedModalClosed === 'true');
-        if (location.state && location.state.showModal && !modalClosed) {
-          setIsReserveModalOpen(true);
-        }
-      }, [location.state,  modalClosed]);
 
     const categories = ['#조용한', '#회의', '#팀플', '#스터디룸', '#프린트'];
 
@@ -56,16 +43,19 @@ function Main() {
         setSelectedCategory(category);
     };
     const handleReturnClick = () => {
-        navigate('/return');
+        navigate(`/return`);
     };
+    const handleExtensionClick = () => {
+        navigate(`/extension`)
+    }
     const handleAlarmClick = () => {
-        navigate('/Alarm');
+        navigate(`/Alarm`);
     };
     const handleHistoryClick = () => {
-        navigate('/history');
+        navigate(`/history`);
     };
     const handleInfoClick = () => {
-        navigate('/Info');
+        navigate(`/Info`);
     };
 
     const facilityData = [
@@ -110,11 +100,11 @@ function Main() {
                 </A.CustomSlider>
             </A.container>
             <A.Button1 onClick = {handleReturnClick}>반납하기</A.Button1>
+            <A.Button1 onClick = {handleExtensionClick}>연장하기</A.Button1>
             <A.Button1 onClick = {handleAlarmClick}>알람</A.Button1>
             <A.Button1 onClick = {handleHistoryClick}>예약 내역</A.Button1>
             <A.Button1 onClick = {handleInfoClick}>상세 정보</A.Button1>
             <NavigationBar />
-            <Modal isOpen={isReserveModalOpen} onClose={() => setIsReserveModalOpen(false)} />  
         </A.Body>
     );
 }

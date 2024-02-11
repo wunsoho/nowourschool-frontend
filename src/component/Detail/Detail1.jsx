@@ -14,8 +14,6 @@ function Detail1() {
   const { id } = location.state || {};
   const navigate = useNavigate();
   const [facilityData, setFacilityData] = useState(null);
-  const [reservationStatus, setReservationStatus] = useState(false);
-  const [filteredItems, setFilteredItems] = useState([]);
 
   const settings1 = {
     infinite: true,
@@ -74,17 +72,10 @@ function Detail1() {
       };
     }, []);
     const onClickButton1 = () => {
-      if (reservationStatus) {
-        console.log('예약 반납 중');
-      } else {
         navigate(`/status`);
-      }
     };
 
     const onClickButton2 = () => {
-      if (reservationStatus) {
-        console.log('예약 연장 중');
-      } else {
         navigate(`/facility/${id}/reserve1`, {
           state: {
             buildingName: facilityData.buildingName,
@@ -93,7 +84,6 @@ function Detail1() {
             id: id,
           },
         });
-      }
     };
     const onClickReviewButton = () => {
       navigate(`/review`);
@@ -101,7 +91,7 @@ function Detail1() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzQ2ODQ3NiwiZXhwIjoxNzA3NDc1Njc2fQ.b9C91GdiPssz_GMsElcynDbk6HTEtJNDzLZTT4muvig';
+          const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
           const response = await fetch(`http://13.125.247.248:8080/api/v1/facility/${id}`, {
             method: 'GET',
             headers: {
@@ -124,7 +114,6 @@ function Detail1() {
       fetchData();
     }, [id]);
     useEffect(() => {
-      setFilteredItems();
     }, [facilityData]);
   return (
     <B.Body>
@@ -231,10 +220,10 @@ function Detail1() {
       </B.LocationData>
       <B.ButtonContainer>
       <B.Button1 key={1} onClick={() => onClickButton1()}>
-          {reservationStatus ? '반납하기' : '예약현황'}
+          예약현황
         </B.Button1>
         <B.Button2 key={2} onClick={() => onClickButton2()}>
-          {reservationStatus ? '연장하기' : '예약하기'}
+          예약하기
         </B.Button2>
       </B.ButtonContainer>
     </B.Body>
@@ -252,7 +241,7 @@ function DetailDataItem({ title, content }) {
 
 const NextArrow = ({ onClick }) => {
     return (
-      <B.ArrowContainer onClick={onClick} right>
+      <B.ArrowContainer right="true" onClick={onClick}>
         <img src={NextArrow_img} alt="Next" />
       </B.ArrowContainer>
     );
@@ -260,7 +249,7 @@ const NextArrow = ({ onClick }) => {
   
   const PrevArrow = ({ onClick }) => {
     return (
-      <B.ArrowContainer onClick={onClick} left>
+      <B.ArrowContainer left="true" onClick={onClick}>
         <img src={PrevArrow_img} alt="Prev" />
       </B.ArrowContainer>
     );

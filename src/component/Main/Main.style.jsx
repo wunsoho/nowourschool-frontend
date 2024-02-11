@@ -50,7 +50,7 @@ export const container = styled.div`
     margin-top : 5px;   
 `   
 export const Button1 = styled.div`
-margin-top : 10vh;
+margin-top : 5vh;
 margin-left : auto;
 margin-right : auto;
 width : 45vw;

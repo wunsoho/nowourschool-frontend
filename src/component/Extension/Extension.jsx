@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Back from '../Image/ReserveImage/back.png';
 import Day from '../Image/ReserveImage/Day.png';
 import Info from '../Image/ReserveImage/Info.png';
@@ -12,21 +12,16 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Switch from 'react-switch';
-import * as B from './Reserve1.style';
+import * as B from './Extension.style';
 import Calendar from 'react-calendar';
 import '../Reserve/Calendar.css';
 import Modal from '../Modal/ReserveModal';
-import NotificationModal from '../Modal/NotificationModal';
-import { Client } from '@stomp/stompjs';
+
 function Reserve1() {
-    const location = useLocation();
-    const { buildingName, name, location: facilityLocation, id } = location.state;
     const navigate = useNavigate();
     const handleGoBack = () => {
-      navigate(`/facility/${id}`,{
-        state : {id}
-      });
-    };  
+      navigate(`/`); 
+    }
     const [value, onChange] = useState(new Date());
     const [counter, setcount] = useState(0);
     const [bookedTimes, setBookedTimes] = useState([]);
@@ -40,8 +35,8 @@ function Reserve1() {
       onChange(newValue);
     
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
-        const response = await fetch(`http://13.125.247.248:8080/api/v1/reservation/time?facilityId=${id}&year=${year}&month=${month}&day=${day}`, {
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY0MDkxNSwiZXhwIjoxNzA3NjQ4MTE1fQ.o1z1nwioeTBZvMuiAxnbuDFIyvFY8RdB34swvf7xlhU';
+        const response = await fetch(`http://13.125.247.248:8080/api/v1/reservation/time?facilityId=1&year=${year}&month=${month}&day=${day}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -137,7 +132,6 @@ function Reserve1() {
     
         const requestBody = {
           memberId: 9,
-          facilityId: location.state.id,
           startTime: selectedStartTime,
           endTime: selectedStartTime + 1,
           duration: duration,
@@ -172,41 +166,6 @@ function Reserve1() {
         console.error('Error making reservation:', error);
       }
     };
-    const [client, setClient] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState('');
-
-  useEffect(() => {
-    const newClient = new Client({
-      brokerURL: 'ws://13.125.247.248:8080/ws',
-      onConnect: () => {
-        console.log('Connected to WebSocket server');
-
-        newClient.subscribe('/topic/alert', (message) => {
-          if (message.body) {
-            console.log(`Received message from server: ${message.body}`);
-
-            setIsOpen(true);
-            setNotificationMessage(message.body);
-          }
-        });
-      },
-      debug: (str) => console.log(str),
-    });
-
-    newClient.activate();
-    setClient(newClient);
-
-    return () => {
-      if (newClient) {
-        newClient.deactivate();
-      }
-    };
-  }, []);
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
 
     return( 
@@ -215,15 +174,15 @@ function Reserve1() {
                 <button onClick={handleGoBack} className = "Backbutton">
                     <img src = { Back } alt = "뒤로가기"/>
                 </button>
-                <div className = "title">예약</div>
+                <div className = "title">연장하기</div>
             </B.Back>
             <B.InfoContainer>
                 <B.InfoImg>
                     <img src = { Info } alt = "정보"/>
                 </B.InfoImg>
                 <B.Info>
-                    <B.InfoTitle>{buildingName}</B.InfoTitle>
-                    <B.InfoLocation>{name} {facilityLocation}</B.InfoLocation>
+                    <B.InfoTitle>학생회관소강당</B.InfoTitle>
+                    <B.InfoLocation>22호관 지하 1F</B.InfoLocation>
                 </B.Info>
             </B.InfoContainer>
             <B.line>    
@@ -312,7 +271,6 @@ function Reserve1() {
             <B.ConfirmButton className = {selectedTime.length > 0 || selectedAlarm.length > 0 ? 'active' : ''}
             onClick={handleConfirmButtonClick}>확인</B.ConfirmButton>
             <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)} />
-            <NotificationModal isOpen={isOpen} message={notificationMessage} onClose={closeModal} />
         </B.Body>
     );
 }

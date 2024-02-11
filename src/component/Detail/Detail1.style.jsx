@@ -5,7 +5,7 @@ export const Body = styled.div`
   max-width: 960px;
   width: 100%;
 `
-export const ArrowContainer = styled.button`
+const ArrowContainer = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -14,8 +14,12 @@ export const ArrowContainer = styled.button`
   padding: 0;
   margin: 0;
   ${({ right }) => (right ? 'right: 0;' : 'left: 0;')}
-  z-index: 1; /* Ensure it appears above the image */
-`;  
+  z-index: 1;
+`;
+
+ArrowContainer.shouldForwardProp = prop => prop !== 'right' && prop !== 'left';
+
+export { ArrowContainer };
 
 export const TextContainer = styled.div`
   width : 70vw;

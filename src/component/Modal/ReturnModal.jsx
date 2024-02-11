@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Modal/Modal.style';
+import './Modal.style';
 import * as B from './Modal.style';
 import ModalImg from '../Image/MainImage/ModalImage.png'
 
@@ -17,14 +17,15 @@ const Modal = ({ isOpen, onClose  }) => {
     const handleClose = () => {
       localStorage.setItem('modalClosed', 'true');
       onClose();
+      navigate('/');
     };
-  return (
+  return (  
     <>
       {isOpen && (
         <B.modaloverlay onClick={handleModalClick}>
           <B.ModalTotal>
               <B.ModalHeader>
-                홍길동님의 {'<'}<B.GreenText>학생회관 소강당</B.GreenText>{'>'} <br/> 예약이 완료되었습니다.
+                홍길동님의 {'<'}<B.GreenText>학생회관 소강당</B.GreenText>{'>'} <br/> 반납이 완료되었습니다.
               </B.ModalHeader>
               <B.ModalContent>
                 <span className="close-btn" onClick={handleClose}>&times;</span>
@@ -35,7 +36,7 @@ const Modal = ({ isOpen, onClose  }) => {
                   <div className = "time">이용일자 : 2024-01-23<br/>이용시간 : 10:00~10:59</div>
                 </B.ModalInfo>
                 <B.Button>
-                  <button className = "button" onClick ={handleStatusBottomClick}>예약 내역</button>
+                  <button className = "button" onClick ={handleStatusBottomClick}>리뷰 작성하기</button>
                 </B.Button>
             </B.ModalContent>
           </B.ModalTotal>
