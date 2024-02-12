@@ -13,7 +13,7 @@ const ImageUpload = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/upload', {
+      const response = await fetch('http://13.125.247.248:8080/api/v1/user/review', {
         method: 'POST',
         body: formData,
       });
@@ -36,7 +36,7 @@ const ImageUpload = () => {
       <input type="file" multiple onChange={handleImageChange} />
       <div>
         {images.map((image, index) => (
-          <img key={index} src={`http://localhost:5000${image}`} alt={`uploaded-${index}`} style={{ width: '25vw', height: '25vw',marginLeft:"2vw",marginRight:'2vw',borderRadius:"4vw"}} />
+          <img key={index} src={`http://13.125.247.248:8080/api/v1/user/review${image}`} alt={`uploaded-${index}`} style={{ width: '25vw', height: '25vw',marginLeft:"2vw",marginRight:'2vw',borderRadius:"4vw"}} />
         ))}
       </div>
     </div>

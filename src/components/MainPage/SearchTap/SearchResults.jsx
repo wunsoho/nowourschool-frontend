@@ -37,6 +37,7 @@ function SearchResults(){
                 border:"0",
                 borderRadius:"20px",
                 backgroundColor:"#f1f1f1"}}>
+
                 <input type="text" placeholder="검색어를 입력하세요" style={{
                 display:`${pointer1}`,
                 width:"50vw",
@@ -47,6 +48,7 @@ function SearchResults(){
                 fontSize:"16px",
                 backgroundColor:"#f1f1f1"
                 }}></input>
+
                 <p style={{
                 display:`${pointer2}`,
                 float:"left",
@@ -59,13 +61,15 @@ function SearchResults(){
                 border:"0",
                 fontSize:"16px",
                 backgroundColor:"#f1f1f1"}}>{state.title["queries"]}</p>
+
                 <img src={search2} alt="검색" style={{float:"right", width:"5vw", marginTop:"1.5vh", marginRight:"4vw"}}></img>
                 <img onClick={changeState} src={x} alt="지우기" style={{float:"right",width:"4vw",marginTop:"1.7vh",marginRight:"2.5vw"}}/>
             </div>
-            <Link to="/search">
+            <Link to="/search" style={{textDecoration:"none"}}>
                 <p style={{float:"right", marginRight:"7vw",marginTop:"4.4vh",textDecoration:"none"}}>취소</p>
             </Link>
         </div>
+        
         <div style={{display:"table",marginBottom:"2vh"}}>
             <img src={StudentsSogangdang} alt="학생회관 소강당" style={{float:"left", margin:"2vw",marginBottom:"0"}}/>
             <img src={hwasalpyo3} alt="화살표" style={{float:"right",width:"6.5vw",marginTop:"2.5vh",marginRight:"4vw"}}/>

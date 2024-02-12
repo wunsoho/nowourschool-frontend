@@ -1,10 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import jwt from "jsonwebtoken";
 import hwasalpyo2 from "../../../MainPage/Image/hwasalpyo2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function QnA(){
+  const navigate = useNavigate();
+  const handleOnclick = () => {
+      navigate('/');
+  }
 
-    const [QuestionContent,setQuestionContent] = useState("");
+  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aXRsZSI6IuusuOydmOygnOuqqSIsImJvZHkiOiLrrLjsnZjrgrTsmqkifQ.xYKg7hWFrFSnCP12c3FqFL8raypiEEpSmMoFeyvyrLI';
+  
+  const [postContent1, setPostContent1] = useState('');
+  const [postContent2, setPostContent2] = useState('');
+
+  const data = {
+    title: {postContent1},
+    body: {postContent2},
+  };
+
+
+  const handleContentChange1 = (event) => {
+      setPostContent1(event.target.value);
+  };
+
+  const handleContentChange2 = (event) => {
+    setPostContent2(event.target.value);
+};
+
+  const handleUpload = async () => {
+
+      try {
+        const response = await fetch('http://13.125.247.248:8080/api/v1/user/inquiry', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(data),
+        });
+  
+        if (response.ok) {
+          console.log('글이 성공적으로 업로드되었습니다.');
+          
+        } else {
+          console.error('글 업로드에 실패했습니다.');
+        }
+      } catch (error) {
+        console.error('오류 발생:', error);
+      }
+    };
+
 
     return(
         <div style={{height:"92vh", backgroundColor:"#f1f1f1"}}>
@@ -23,9 +70,10 @@ function QnA(){
                 boxShadow:"0px 1px 3.5px 0px rgba(0, 0, 0, 0.25)",
                 backgroundColor:"white"
             }}>
-                <input type="text" placeholder="제목을 입력해주세요." style={{width:"90vw",height:"5vh",marginTop:"8vh",paddingLeft:"5vw",border:"0",borderBottom: "0.5px solid #f1f1f1",fontSize:"16px",letterSpacing:"-0.2vw"}}/>
-                <textarea type="text" value={QuestionContent} onChange={(e) => setQuestionContent(e.target.value)} placeholder="문의 내용을 입력해주세요." style={{width:"86vw",height:"39.5vh",paddingTop:"2vh",paddingBottom:"30vw",paddingLeft:"5vw",paddingRight:"5vw",border:"0",fontSize:"15px",fontFamily:"pretendard",letterSpacing:"-0.2vw"}}/>
+                <input type="text" value={postContent1} onChange={handleContentChange1} placeholder="제목을 입력해주세요." style={{width:"90vw",height:"5vh",marginTop:"8vh",paddingLeft:"5vw",border:"0",borderBottom: "0.5px solid #f1f1f1",fontSize:"16px",letterSpacing:"-0.2vw"}}/>
+                <textarea type="text" value={postContent2} onChange={handleContentChange2} placeholder="문의 내용을 입력해주세요." style={{width:"86vw",height:"39.5vh",paddingTop:"2vh",paddingBottom:"30vw",paddingLeft:"5vw",paddingRight:"5vw",border:"0",fontSize:"15px",fontFamily:"pretendard",letterSpacing:"-0.2vw"}}/>
             </div>
+            <button onClick={handleUpload} style={{width:"96.5vw", height:"6vh", marginTop:"2.5vh",fontSize:"16px",fontWeight:"600",color:"white",backgroundColor:"#1FBC70",borderRadius:"5vw",border:"0"}}>문의하기</button>
         </div>
     );
 }
