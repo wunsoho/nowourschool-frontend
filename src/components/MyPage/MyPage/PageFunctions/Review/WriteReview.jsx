@@ -28,33 +28,19 @@ function WriteReview(){
 
 
     const ImageUpload = () => {
-        const [images, setImages] = useState([]);
-      
-        const handleImageChange = async (e) => {
-            const files = e.target.files;
-            const formData = new FormData();
-        
-            for (let i = 0; i < files.length; i++) {
-              formData.append('images', files[i]);
-            }
-        
-            try {
-              const response = await fetch('http://13.125.247.248:8080/api/v1/user/review', {
-                method: 'POST',
-                body: formData,
-              });
-        
-              if (response.ok) {
-                const data = await response.json();
-                const newImages = data.imageUrls;
-                setImages([...images, ...newImages]);
-              } else {
-                console.error('Failed to upload images');
-              }
-            } catch (error) {
-              console.error('Error during image upload:', error);
-            }
-          };
+      const [images, setImages] = useState([]);
+
+      const handleImageChange = (e) => {
+        const files = e.target.files;
+        const newImages = [];
+    
+        for (let i = 0; i < files.length; i++) {
+          const imageUrl = URL.createObjectURL(files[i]);
+          newImages.push(imageUrl);
+        }
+    
+        setImages([...images, ...newImages]);
+      };
       
         
         return (

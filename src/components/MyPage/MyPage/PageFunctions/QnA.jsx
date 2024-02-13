@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import jwt from "jsonwebtoken";
 import hwasalpyo2 from "../../../MainPage/Image/hwasalpyo2.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
