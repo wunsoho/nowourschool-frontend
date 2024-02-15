@@ -1,10 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NotiContent, NotiHeader, NotiBack, NotiTitle, NotiSort, NotiSortDiv, NotiBoard } from "../styled/Notification.styled";
 import Board from "../components/NotificationBoard";
 
-export default function Announcement() {  
+export default function Announcement() {
+  const [sort, setSort] = useState("전체");
+  const [notiData, setNotiData] = useState([]);
+  const [DetailNotiData, setDetailNotiData] = useState([]);
+
+  useEffect(() => {
+    fetchData(sort);
+  }, [sort]);
+
+  const fetchData = async (sort) => {
+    try {
+      let url = "http://13.125.247.248:8080/api/v1/announcement/list?page=1";
+      if (sort !== "전체") {
+        url += `&type=${sort}`;
+      }
+      const response = await axios.get(url, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiZW1haWwiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiaWF0IjoxNzA3NjM0NjgzLCJleHAiOjE3MDgxNTMwODN9.YTc1heUI2h761Jgg4HI8LMHmK97c5AVROknvWE0qJ5Q",
+        },
+      });
+      if (response.data.isSuccess === true) {
+        setNotiData(response.data.result.list);
+      } else {
+        console.error("서버 응답 오류:", response.data.message);
+      }
+    } catch (error) {
+      console.error("공지사항 데이터를 가져오는 중 오류 발생:", error);
+    }
+  };
+
+  const fetchNotiData = async (id) => {
+    try {
+      let url = `http://13.125.247.248:8080/api/v1/announcement/${id}`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiZW1haWwiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiaWF0IjoxNzA3NjM0NjgzLCJleHAiOjE3MDgxNTMwODN9.YTc1heUI2h761Jgg4HI8LMHmK97c5AVROknvWE0qJ5Q",
+        },
+      });
+      if (response.data.isSuccess === true) {
+        setDetailNotiData(response.data.result);
+      } else {
+        console.error("서버 응답 오류:", response.data.message);
+      }
+    } catch (error) {
+      console.error("공지사항 자세히보기 데이터를 가져오는 중 오류 발생:", error);
+    }
+  };
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+  };
+
   const handleBackClick = () => {
     window.history.back();
   };
@@ -20,24 +74,21 @@ export default function Announcement() {
           <NotiTitle>공지사항</NotiTitle>
       </NotiHeader>
       <NotiSortDiv>
-        <NotiSort>
-          <option value="all">전체</option>
-          <option value="academic_notice">학사공지</option>
-          <option value="information">안내</option>
+        <NotiSort value={sort} onChange={handleSortChange}>
+          <option value="전체">전체</option>
+          <option value="일반">일반</option>
+          <option value="취업">취업</option>
+          <option value="행사">행사</option>
         </NotiSort>
       </NotiSortDiv>
       <NotiBoard>
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[안내] 열린열람실 사용제한 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
-        <Board title="[학사공지] 겨울 계절학기 성적열람 안내" date={'2024-01-20'} />
+        {notiData.map((noti) => (
+          <Board
+            key={noti.id}
+            title={noti.title}
+            date={noti.date}
+          />
+        ))}
       </NotiBoard>
     </NotiContent>
   );

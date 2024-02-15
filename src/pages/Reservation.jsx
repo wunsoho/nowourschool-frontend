@@ -1,186 +1,70 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReservationContent, ReservationHeader, ReservationTitle, ReservationSearch, ReservationCategoryAll, ReservationCategory1st, ReservationCategory2nd } from "../styled/Reservation.styled";
 
 export default function Reservation() {
-  const [selected1stCategory, setSelected1stCategory] = useState("01호관-화학공학관");
+  const [categories, setCategories] = useState([]);
+  const [selected1stCategory, setSelected1stCategory] = useState(null);
   const [selected2ndCategory, setSelected2ndCategory] = useState(null);
+  const navigate = useNavigate();
 
-  const buildingCategories = [
-    "01호관-화학공학관",
-    "02호관-기계항공관",
-    "03호관-공학행정관",
-    "05호관-산학협력리더스홀",
-    "06호관-조형관",
-    "07호관-전기/컴퓨터공학관",
-    "08호관-자연과학관",
-    "09호관-대학회관/해송홀",
-    "10호관-문수관",
-    "11호관-교수연구동",
-    "12호관-체육관",
-    "13호관-동아리관1",
-    "14호관-인문관",
-    "15호관-사회과학관",
-    "16호관-아산도서관",
-    "24호관-경영관",
-    "28호관-예술관(미술학부)",
-    "29호관-예술관(음악학부)"
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(
+        'http://13.125.247.248:8080/api/v1/facility/category/building',
+        {
+          headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzk4MTczMiwiZXhwIjoxNzA3OTg4OTMyfQ.kJrMW-sJKm3gXZxs_apst6X_UujVL6DPJe9wVNO-mPU",
+          },
+        }
+      );
+      if (result.data.isSuccess === true) {
+        setCategories(result.data.result.categories);
+      } else {
+        console.error("서버 응답 오류:", result.data.message);
+      };
+    };
+    fetchData();
+  }, []);
 
-  const categoriesMap = {
-    "01호관-화학공학관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "02호관-기계항공관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "03호관-공학행정관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "05호관-산학협력리더스홀" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "06호관-조형관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "07호관-전기/컴퓨터공학관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "08호관-자연과학관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "09호관-대학회관/해송홀" :[
-      "대강당",
-      "소강당",
-    ],
-    "10호관-문수관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "11호관-교수연구동" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "12호관-체육관" :[
-      "네트",
-      "골대",
-    ],
-    "13호관-동아리관1" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "14호관-인문관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "15호관-사회과학관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "16호관-아산도서관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "24호관-경영관" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "28호관-예술관(미술학부)" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ],
-    "29호관-예술관(음악학부)" :[
-      "101호 강의실",
-      "102호 강의실",
-      "103호 강의실",
-      "201호 강의실",
-      "202호 강의실",
-    ]
+  const handle1stCategoryClick = (category) => {
+    if (category.count > 0) {
+      setSelected1stCategory(category);
+      setSelected2ndCategory(null);
+    }
   };
 
-  const handle1stCategoryClick = (Firstcategory) => {
-    setSelected1stCategory(Firstcategory);
-    setSelected2ndCategory(null);
-  };
-
-  const handle2ndCategoryClick = () => {
-    window.location.href = "/detailinfo";
+  const handle2ndCategoryClick = (facility) => {
+    setSelected2ndCategory(facility);
+    const id = facility.id;
+    navigate('/detailinfo', { state : {id} });
   };
 
   return (
     <ReservationContent>
       <ReservationHeader>
-          <ReservationTitle>예약</ReservationTitle>
-          <ReservationSearch to="/search">
-            <FontAwesomeIcon
-                icon="magnifying-glass"
-                style={{ fontSize: '1.5em' , color: '#000000'}} />
-          </ReservationSearch>
+        <ReservationTitle>예약</ReservationTitle>
+        <ReservationSearch to="/search">
+          <FontAwesomeIcon
+              icon="magnifying-glass"
+              style={{ fontSize: '1.5em' , color: '#000000'}} />
+        </ReservationSearch>
       </ReservationHeader>
       <ReservationCategoryAll>
-      <ReservationCategory1st>
-          {buildingCategories.map(category => (
-            <div key={category} onClick={() => handle1stCategoryClick(category)} className={selected1stCategory === category ? "active" : ""}>
-              {category}
+        <ReservationCategory1st>
+          {categories.map(category => (
+            <div key={category.name} onClick={() => handle1stCategoryClick(category)} className={selected1stCategory?.name === category.name ? "active" : ""}>
+              {category.name}
             </div>
           ))}
         </ReservationCategory1st>
         <ReservationCategory2nd>
-          {(categoriesMap[selected1stCategory] || []).map(category => (
-            <div key={category} onClick={() => handle2ndCategoryClick(category)}>
-              {category}
+          {selected1stCategory && selected1stCategory.count > 0 && selected1stCategory.facilities.map((facility) => (
+            <div key={facility.name} onClick={() => handle2ndCategoryClick(facility)}>
+              {facility.name}
             </div>
           ))}
         </ReservationCategory2nd>

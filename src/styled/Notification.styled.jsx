@@ -42,7 +42,7 @@ export const NotiSortDiv = styled.div`
 
 export const NotiSort = styled.select`
     display: flex;
-    padding: 6px 3px;
+    padding: 7px 15px 7px 5px;
     margin: 10px 13px;
     background-color: #F1F1F1;
     border: none;

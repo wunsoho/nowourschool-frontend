@@ -96,15 +96,23 @@ export const InfoWord = styled.div`
 export const InfoTitle = styled.div`
     display: flex;
     z-index: 2;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
 `
 
-export const InfoTime = styled.p`
+export const InfoTime = styled.div`
     display: flex;
     z-index: 2;
-    margin-top: 5px;
-    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-size: 13.5px;
+`
+
+export const InfoDetilTime = styled.div`
+    display: flex;
+    z-index: 2;
+    margin-bottom: 20px;
+    font-size: 13px;
 `
 
 export const InfoButton = styled.div`
@@ -115,8 +123,9 @@ export const InfoButton = styled.div`
     align-items: center;
 `
 
-export const InfoDetail = styled(Link)`
+export const InfoDetail = styled.div`
     display: flex;
+    z-index: 3;
     width: 49.5%;
     padding: 8px;
     justify-content: center;
