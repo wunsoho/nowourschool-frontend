@@ -20,7 +20,7 @@ function Detail1() {
   useEffect(() => {
     const fetchFacilityImages = async () => {
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE2OTMwNSwiZXhwIjoxNzA4MTc2NTA1fQ.NOykmAtZq5cIAJ-nVEHDcJ9rXHUpWtxEIYHjsVO1Dc8';
         const response = await fetch(`http://13.125.247.248:8080/api/v1/facility/${id}/img?page=1`, {
           method: 'GET',
           headers: {
@@ -116,7 +116,7 @@ function Detail1() {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
+          const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE2OTMwNSwiZXhwIjoxNzA4MTc2NTA1fQ.NOykmAtZq5cIAJ-nVEHDcJ9rXHUpWtxEIYHjsVO1Dc8';
           const response = await fetch(`http://13.125.247.248:8080/api/v1/facility/${id}`, {
             method: 'GET',
             headers: {

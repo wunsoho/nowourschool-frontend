@@ -35,7 +35,7 @@ function Extension() {
       onChange(newValue);
     
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE2OTMwNSwiZXhwIjoxNzA4MTc2NTA1fQ.NOykmAtZq5cIAJ-nVEHDcJ9rXHUpWtxEIYHjsVO1Dc8';
         const response = await fetch(`http://13.125.247.248:8080/api/v1/reservation/time?facilityId=1&year=${year}&month=${month}&day=${day}`, {
           method: 'GET',
           headers: {
@@ -124,7 +124,7 @@ function Extension() {
     };
     const handleConfirmButtonClick = async () => {
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA'; 
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE2OTMwNSwiZXhwIjoxNzA4MTc2NTA1fQ.NOykmAtZq5cIAJ-nVEHDcJ9rXHUpWtxEIYHjsVO1Dc8'; 
     
         const response = await fetch('http://13.125.247.248:8080/api/v1/reservation/extend', {
           method: 'POST',
