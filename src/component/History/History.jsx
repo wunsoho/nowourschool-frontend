@@ -23,7 +23,7 @@ function History() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
+                const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
                 const response = await fetch('http://13.125.247.248:8080/api/v1/reservation/details?memberId=9&page=1', {
                     method: 'GET',
                     headers: {

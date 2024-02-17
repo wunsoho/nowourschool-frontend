@@ -1,14 +1,26 @@
-import React, { useState } from "react";
-import "./FontAwesome";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import "../Navi/FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Wrapper, StyledNav, NavLink } from "./NavigationBar.styled";
 
-const NavigationBar = ({ setNavigationBarHeight }) => {
-  const [activeNav, setActiveNav] = useState(localStorage.getItem('activeNav') || 'home');
+const NavigationBar = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const [activeNav, setActiveNav] = useState(() => {
+    const activeNavFromPathname = location.pathname.split('/')[1];
+    return activeNavFromPathname || "home";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("activeNav", activeNav);
+  }, [activeNav]);
 
   const handleClick = (navItem) => {
     setActiveNav(navItem);
-    localStorage.setItem('activeNav', navItem);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set("activeNav", navItem);
+    window.history.push({ search: newSearchParams.toString() });
   }
 
   return (
@@ -41,7 +53,7 @@ const NavigationBar = ({ setNavigationBarHeight }) => {
               style={{ fontSize: '1.5em' }}
               className={activeNav === 'map' ? "active" : "nav-item"}
             />
-            <p className={activeNav === 'map' ? "active" : "nav-item"}>지도 </p>
+            <p className={activeNav === 'map' ? "active" : "nav-item"}>지도</p>
           </div>
         </NavLink>
         <NavLink to="/mypage" onClick={() => handleClick('mypage')}>

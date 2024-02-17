@@ -3,12 +3,12 @@ import TimeTable from './TimeTable';
 
 const Status = () => {
   const [reservationData, setReservationData] = useState([]);
-  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ'; // 주어진 토큰
+  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzgyNDIxNywiZXhwIjoxNzA3ODMxNDE3fQ.M4TP8J5sC4xdSoul9Z6TDpehTaWdySgeZfw-pHCImDw';
 
   useEffect(() => {
     const fetchReservationData = async () => {
       try {
-        const facilityId = 1; // 예약 정보를 가져올 시설의 ID
+        const facilityId = 1;
         const response = await fetch(`http://13.125.247.248:8080/api/v1/reservation/byfacility?facilityId=${facilityId}&page=1`, {
           headers: {
             'Authorization': `Bearer ${token}`,

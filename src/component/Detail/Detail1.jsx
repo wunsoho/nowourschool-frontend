@@ -4,9 +4,9 @@ import Slider from 'react-slick';
 import * as B from './Detail1.style';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import fac_detail1 from '../Image/DetailImage/fac_detail1.png';
 import NextArrow_img from '../Image/DetailImage/NextArrow.png';
 import PrevArrow_img from '../Image/DetailImage/PrevArrow.png';
+import default_img from '../Image/DetailImage/defaultImg.png';
 import Map from '../Detail/Map';
 
 function Detail1() {
@@ -14,7 +14,35 @@ function Detail1() {
   const { id } = location.state || {};
   const navigate = useNavigate();
   const [facilityData, setFacilityData] = useState(null);
+  const [facilityImages, setFacilityImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchFacilityImages = async () => {
+      try {
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
+        const response = await fetch(`http://13.125.247.248:8080/api/v1/facility/${id}/img?page=1`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setFacilityImages(data.result.list);
+        } else {
+          console.error('Failed to fetch facility images');
+        }
+      } catch (error) {
+        console.error('Error fetching facility images:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFacilityImages();
+  }, [id]);
   const settings1 = {
     infinite: true,
     speed: 500,
@@ -29,14 +57,7 @@ function Detail1() {
     slidesToShow: 1 ,
     slidesToScroll: 1,
     centerMode : true,
-};
-  const fac_detailData = [
-    { id: 1, poster_path: fac_detail1 },
-    { id: 2, poster_path: fac_detail1 },
-    { id: 3, poster_path: fac_detail1 },
-    { id: 4, poster_path: fac_detail1 },
-    { id: 5, poster_path: fac_detail1 },
-  ];
+  };
   const AVR_RATE = 82;
     const STAR_IDX_ARR = ['first', 'second', 'third', 'fourth', 'last'];
     const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
@@ -86,12 +107,16 @@ function Detail1() {
         });
     };
     const onClickReviewButton = () => {
-      navigate(`/review`);
+      navigate(`/review`, {
+        state: {
+          id : id
+        },
+      });
     }
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
+          const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
           const response = await fetch(`http://13.125.247.248:8080/api/v1/facility/${id}`, {
             method: 'GET',
             headers: {
@@ -103,6 +128,7 @@ function Detail1() {
           if (response.ok) {
             const data = await response.json();
             setFacilityData(data.result);
+            console.log(data);
           } else {
             console.error('Failed to fetch facility data');
           }
@@ -117,22 +143,31 @@ function Detail1() {
     }, [facilityData]);
   return (
     <B.Body>
-      <B.ImageSlider>
-        <Slider {...settings1}>
-          {fac_detailData.map((item) => (
-            <div key={item.id}>
+     <B.ImageSlider>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <Slider {...settings1}>
+            {facilityImages.length > 0 ? (
+              facilityImages.map((item, index) => (
+                <div key={index} className="slide-container">
+                  <img className="img" src={item} alt={`facility${index + 1}`} />
+                </div>
+              ))
+            ) : (
               <div className="slide-container">
-                <img className = "img" src={item.poster_path} alt={`facility${item.id}`} />
+                <img className="img" src={default_img} alt="이미지가 없습니다" />
               </div>
-            </div>
-          ))}
-        </Slider>
+            )}
+          </Slider>
+        )}
       </B.ImageSlider>
       <B.All>
         <B.TextContainer>
           <B.TitleText>{facilityData && facilityData.buildingName}</B.TitleText>
           <B.Number>{facilityData && facilityData.name}</B.Number>
-          <B.Time>이용가능시간 {facilityData && facilityData.time}</B.Time>
+          <B.Time>이용가능시간 {facilityData && facilityData.hours[0] &&
+          `${facilityData.hours[0].openingTime} - ${facilityData.hours[0].closingTime}`}</B.Time>
         </B.TextContainer>
         <B.ReviewWrap>
           <B.StarRateWrap>
@@ -169,7 +204,7 @@ function Detail1() {
                   <B.ImageContainer>
                     <img className = "img12" src={item.imageURL} alt={`facility${item.id}`} />
                     <B.ReviewInfo>
-                      <div>{item.nickname}</div>
+                      <div className ="nickName">{item.nickname}</div>
                       <B.ReviewDate>{item.date}</B.ReviewDate>
                     </B.ReviewInfo>
                     <B.StarRateWrap2>
@@ -207,7 +242,9 @@ function Detail1() {
       <B.MapInfo>
         <B.DetailTitle>세부 위치</B.DetailTitle>
         <B.DetailContent>{facilityData && facilityData.location}</B.DetailContent>
-        <B.Map><Map/></B.Map>
+        <B.Map>
+          <Map latitude={facilityData && facilityData.latitude} longitude={facilityData && facilityData.longitude} />
+        </B.Map>
       </B.MapInfo>
       <B.LocationData>
         {[

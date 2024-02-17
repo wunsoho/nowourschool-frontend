@@ -17,7 +17,7 @@ import Calendar from 'react-calendar';
 import '../Reserve/Calendar.css';
 import Modal from '../Modal/ReserveModal';
 
-function Reserve1() {
+function Extension() {
     const navigate = useNavigate();
     const handleGoBack = () => {
       navigate(`/`); 
@@ -35,7 +35,7 @@ function Reserve1() {
       onChange(newValue);
     
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY0MDkxNSwiZXhwIjoxNzA3NjQ4MTE1fQ.o1z1nwioeTBZvMuiAxnbuDFIyvFY8RdB34swvf7xlhU';
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
         const response = await fetch(`http://13.125.247.248:8080/api/v1/reservation/time?facilityId=1&year=${year}&month=${month}&day=${day}`, {
           method: 'GET',
           headers: {
@@ -48,7 +48,13 @@ function Reserve1() {
           const data = await response.json();
           const bookedUpList = data.result.bookedUpList;
 
-          const bookedTimes = bookedUpList.map(item => item.startTime);
+          let bookedTimes = [];
+
+          bookedUpList.forEach(item => {
+            for (let i = item.startTime; i < item.endTime; i++) {
+              bookedTimes.push(i);
+            }
+          });
           setSelectedTime([]);
           setBookedTimes(bookedTimes);
 
@@ -118,52 +124,28 @@ function Reserve1() {
     };
     const handleConfirmButtonClick = async () => {
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
-        const selectedStartTime = selectedTime[0];
-        const selectedDate = value;
-        const selectedAlerts = selectedAlarm.map((selectedInfo) => {
-          const correspondingItem = fac_detailData2.find(item => item.Info === selectedInfo);
-          return correspondingItem ? correspondingItem.exp : null;
-        }).filter(Boolean);
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA'; 
     
-        const year = selectedDate.getFullYear();
-        const month = selectedDate.getMonth() + 1;
-        const day = selectedDate.getDate();
-    
-        const requestBody = {
-          memberId: 9,
-          startTime: selectedStartTime,
-          endTime: selectedStartTime + 1,
-          duration: duration,
-          year: year.toString(),  
-          month: month.toString(),
-          day: day.toString(),
-          alerts: selectedAlerts
-        };
-    
-        const response = await fetch('http://13.125.247.248:8080/api/v1/reservation', {
+        const response = await fetch('http://13.125.247.248:8080/api/v1/reservation/extend', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify(requestBody)
+          body: JSON.stringify({
+            reservation_id: 32, 
+            extendTime: selectedTime.length
+          })
         });
     
         if (response.ok) {
           const responseData = await response.json();
           console.log('POST 요청 성공:', responseData);
-          if (responseData.isSuccess) { 
-            setIsOpenModal(true);
-          } else {
-            console.error('Failed to make reservation:', responseData.message);
-          }
         } else {
-          console.error('Failed to make reservation');
-          console.log(requestBody);
+          console.error('Failed to extend reservation');
         }
       } catch (error) {
-        console.error('Error making reservation:', error);
+        console.error('Error extending reservation:', error);
       }
     };
 
@@ -280,4 +262,4 @@ function convertToAMPMFormat(hour) {
   
   return `${formattedHour}:00 ${ampm}`;
 }
-export default Reserve1;
+export default Extension;

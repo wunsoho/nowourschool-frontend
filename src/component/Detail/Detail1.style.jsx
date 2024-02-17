@@ -90,6 +90,9 @@ export const ReviewDate = styled.div`
 `
 export const ReviewInfo = styled.div`
   margin-left : 1vw;
+  .nickName {
+    width : 20vw;
+  }
 `
 export const StarRateWrap2 = styled.div`
   margin-left : 30vw;

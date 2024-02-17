@@ -1,5 +1,5 @@
 import React from 'react';
-import * as B from '../Re_status/Course.style'; // 이 부분은 필요에 따라 경로를 수정하세요
+import * as B from '../Re_status/Course.style';
 
 const Course = ({ course }) => {
   const hasCourse = !!course;

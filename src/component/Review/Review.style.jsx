@@ -23,7 +23,7 @@ box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.1);
     display : flex;
 }
 `
-export const Star = styled.div`
+export const AverageStar = styled.div`
 margin-left : 5vw;
 `
 export const StarContainer = styled.div`
@@ -31,6 +31,7 @@ margin-top : 5vh;
 `
 export const StarTitle = styled.div`
 font-weight : bold;
+margin-top : 2vh;
 margin-left : 10vw;
 `
 export const ScoreContainer = styled.div`
@@ -116,7 +117,7 @@ export const ReviewInfo = styled.div`
 `
 export const StarRateWrap2 = styled.div`
   display : flex;
-  margin-left : 45vw;
+  margin-left : 40vw;
   margin-bottom : 3vh;
   width: 100%;
   .star_icon {
@@ -133,10 +134,12 @@ export const StarRateWrap2 = styled.div`
 export const ImageContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-top : 1.5vh;
-  margin-left : 3vw;
   img {
     margin-right: 1vw;
+  }
+  .img1{
+    width : 10vw;
+    height : 5vh;
   }
 `
 export const ReviewContainer = styled.div`
@@ -146,19 +149,4 @@ export const ReviewDetail = styled.div`
   font-size : 0.8em;
   margin-top : 1.4vh;
   margin-left : 4vw;
-`
-export const ReviewDetai2 = styled.div`
-  font-size : 0.8em;
-  margin-top : 1.4vh;
-  margin-bottom : 1.5vh;
-  margin-left : 4vw;
-`
-export const Review2 = styled.div`
-background-color : #FFFFFF;
-margin-top : 1vh;
-margin-left : 3vw;
-margin-right : 3vw;
-border-radius : 5vw;
-border: 1px solid #ccc;
-box-shadow : 0px 0px 10px rgba(0, 0, 0, 0.1);
 `

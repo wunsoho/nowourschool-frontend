@@ -40,7 +40,7 @@ function Reserve1() {
       onChange(newValue);
     
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
         const response = await fetch(`http://13.125.247.248:8080/api/v1/reservation/time?facilityId=${id}&year=${year}&month=${month}&day=${day}`, {
           method: 'GET',
           headers: {
@@ -123,7 +123,7 @@ function Reserve1() {
     };
     const handleConfirmButtonClick = async () => {
       try {
-        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwNzY1MzY5MSwiZXhwIjoxNzA3NjYwODkxfQ.wEIg13vYf5RG-8o9mOKugYxmYMR_7ASCObQpqKToykQ';
+        const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODE1MTIyOSwiZXhwIjoxNzA4MTU4NDI5fQ.WzJi_jCEqp1imb-Iu1VgXEbAdip6krc09gtk3hCupNA';
         const selectedStartTime = selectedTime[0];
         const selectedDate = value;
         const selectedAlerts = selectedAlarm.map((selectedInfo) => {
@@ -172,7 +172,6 @@ function Reserve1() {
         console.error('Error making reservation:', error);
       }
     };
-    const [client, setClient] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
 
@@ -195,7 +194,6 @@ function Reserve1() {
     });
 
     newClient.activate();
-    setClient(newClient);
 
     return () => {
       if (newClient) {
