@@ -8,6 +8,7 @@ import Category from "./pages/CategoryBuilding"
 import Search from "./pages/Search";
 import DetailInfo from "./pages/DetailInfo"
 import Notification from "./pages/Notification"
+import NotificationView from "./pages/NotificationView"
 import FAQ from "./pages/FAQ"
 import Inquiry from "./pages/Inquiry"
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/detailinfo" element={<DetailInfo />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/notificationView" element={<NotificationView />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/inquiry" element={<Inquiry />} />
       </Routes>

@@ -1,10 +1,10 @@
 import React from "react";
 import { NotiBoardContainer, NotiBoardSimple, NotiTitle, NotiDate } from "./NotificationBoard.styled"
 
-const NotiBoard = ({ title, date }) => {
+const NotiBoard = ({ onClick, id, title, date }) => {
 
   return (
-    <NotiBoardContainer>
+    <NotiBoardContainer onClick={onClick}>
       <NotiBoardSimple>
         <NotiTitle>{title}</NotiTitle>
         <NotiDate>{date}</NotiDate>

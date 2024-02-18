@@ -138,7 +138,7 @@ function Map() {
           setSelectedMarker(marker);
           setShowInfo(true);
           buildingId = marker.data.id;
-          setInfoId(buildingId)
+          setInfoId(buildingId);
           console.log(buildingId);
           marker.setIcon({
             url: `data:image/svg+xml;utf-8,${encodeURIComponent(
