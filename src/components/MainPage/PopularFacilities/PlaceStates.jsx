@@ -18,10 +18,10 @@ function PlaceStates() {
       const fetchData = async () => {
         try {
             const result = await axios.get(
-              'http://13.125.247.248:8080/api/v1/facility/library',
+              'https://13.125.247.248:8080/api/v1/facility/library',
               {
                 headers: {
-                  Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiZW1haWwiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiaWF0IjoxNzA4MjUwOTY0LCJleHAiOjE3MDgyNTgxNjR9.JI4N0BnMxMvPesFK8axiz67jxhRHUIVVNdA9f1hks7g",
+                  Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODI1ODcwMiwiZXhwIjoxNzA4MjY1OTAyfQ.nwt5ebjGG-XHIwVMCFWpEJelmdGkPhTnyIfARlI0S0w",
                 },
               }
             );
@@ -38,7 +38,7 @@ function PlaceStates() {
       fetchData();
     }, []);
 
-    const Guage = () => {
+    const Gauge = () => {
       if(facilityData.current / facilityData.total > 0.7 && facilityData.current / facilityData.total < 0.9){
         return(
           <div>
@@ -77,9 +77,9 @@ function PlaceStates() {
             </div>
             {facilityData.map((fd) => (
               <div style={{display:"table",width:"95vw",height:"10vh",marginBottom:"2vh",border:"0",borderRadius:"20px",boxShadow:"0px 1px 3.5px 0px rgba(0, 0, 0, 0.25)"}}>  
-                <h3 style={{float:"left",width:"73vw",margin:"2vw",marginBottom:"0",marginTop:"4vw",marginLeft:"4.5vw",fontFamily:"pretendard"}}>{fd.name}</h3>
-                <p style={{float:"right", margin:"2vw",marginTop:"4.8vw",marginRight:"5vw",fontSize:"14px",letterSpacing:"-1px"}}>{fd.status}</p>
-                <OneFourGauge/>
+                <h3 style={{float:"left",width:"75vw",margin:"2vw",marginBottom:"0.5vh",marginTop:"4vw",marginRight:"0",marginLeft:"4.5vw",fontFamily:"pretendard"}}>{fd.name}</h3>
+                <p style={{float:"right", margin:"2vw",marginTop:"4vw",marginLeft:"0",marginRight:"5vw",fontSize:"14px",letterSpacing:"-1px"}}>{fd.status}</p>
+                <Gauge/>
             </div>
             ))}
         </div>

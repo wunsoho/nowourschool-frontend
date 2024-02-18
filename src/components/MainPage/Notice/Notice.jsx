@@ -10,10 +10,10 @@ export default function Notice() {
     const fetchData = async () => {
       try {
           const result = await axios.get(
-            'http://13.125.247.248:8080/api/v1/announcement/sample',
+            'https://13.125.247.248:8080/api/v1/announcement/sample',
             {
               headers: {
-                Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiZW1haWwiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiaWF0IjoxNzA4MjUwOTY0LCJleHAiOjE3MDgyNTgxNjR9.JI4N0BnMxMvPesFK8axiz67jxhRHUIVVNdA9f1hks7g",
+                Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODI1ODcwMiwiZXhwIjoxNzA4MjY1OTAyfQ.nwt5ebjGG-XHIwVMCFWpEJelmdGkPhTnyIfARlI0S0w",
               },
             }
           );

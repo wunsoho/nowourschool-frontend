@@ -15,7 +15,7 @@ export const ZeroGauge = styled.div`
 export const OneFourGauge = styled.div`
         width: 88vw;
         position: relative;
-        margin-Top: 1.5vw;
+        margin-Top: 1vw;
         margin-left: 3.5vw;
         padding-Bottom: 0.6vw;
         max-Height: 0.8vh;

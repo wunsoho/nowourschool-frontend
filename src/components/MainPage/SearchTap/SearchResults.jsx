@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import search2 from "../Image/search2.png";
-import StudentsSogangdang from "../Image/StudentsSogangdang.png";
 import hwasalpyo3 from "../Image/hwasalpyo3.png";
 import x from "../Image/x.png";
 import styled from "styled-components";
@@ -10,7 +9,6 @@ import axios from "axios";
 function SearchResults(){
 
     const {state} = useLocation();
-    const navigate = useNavigate();
 
     const [queries2, setQueries2] = useState(state.title["queries1"]);
 
@@ -24,7 +22,7 @@ function SearchResults(){
         const fetchData = async () => {
           try {
               const result = await axios.get(
-                'http://localhost:8080/api/v1/facility/search?query=카페&page=1',
+                'https://localhost:8080/api/v1/facility/search?query=카페&page=1',
                 {
                   headers: {
                     Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiZW1haWwiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiaWF0IjoxNzA4MjUwOTY0LCJleHAiOjE3MDgyNTgxNjR9.JI4N0BnMxMvPesFK8axiz67jxhRHUIVVNdA9f1hks7g",

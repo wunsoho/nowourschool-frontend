@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import hwasalpyo2 from "../../../MainPage/Image/hwasalpyo2.png";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
 function QnA(){
-  const navigate = useNavigate();
-  const handleOnclick = () => {
-      navigate('/');
-  }
 
-  
   const [postContent1, setPostContent1] = useState('');
   const [postContent2, setPostContent2] = useState('');
 
@@ -30,7 +24,7 @@ function QnA(){
   const handleUpload = async () => {
     const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODI1MDc0NCwiZXhwIjoxNzA4MjU3OTQ0fQ.riLbTDBBS6s6r98ZPfBjUfL3sDcRWn1_y8vt4FGqB8M';
       try {
-        const response = await fetch('http://13.125.247.248:8080/api/v1/user/inquiry', {
+        const response = await fetch('https://13.125.247.248:8080/api/v1/user/inquiry', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
