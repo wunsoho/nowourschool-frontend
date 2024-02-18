@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import hwasalpyo2 from "../Image/hwasalpyo2.png";
 import search1 from "../Image/search1.png";
 import X from "../Image/X.png";
 
 function SearchTap(){
 
-    const [queries, setQueries] = useState("");
+    const [queries1, setQueries1] = useState("");
     const navigate = useNavigate();
     const onClickImg = () => {
         navigate(`/results`,{
             state: {
-                title: {queries}
+                title: {queries1}
             }});
     };
+
 
     const [Delete,setDelete] = useState('');
 
@@ -38,7 +39,7 @@ function SearchTap(){
                 borderRadius:"20px",
                 background:"var(--black-white-white, #FFF)",
                 boxShadow:"0px 1px 3.5px 0px rgba(0, 0, 0, 0.25)"}}>
-                <input type="text" placeholder="검색어를 입력하세요" value={queries} onChange={(e) => setQueries(e.target.value)} style={{
+                <input type="text" placeholder="검색어를 입력하세요" value={queries1} onChange={(e) => setQueries1(e.target.value)} style={{
                 height:"4.7vh",
                 marginLeft:"1.5vw",
                 border:"0",

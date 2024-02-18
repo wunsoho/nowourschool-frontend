@@ -27,7 +27,7 @@ export const OneFourGauge = styled.div`
 
                 & p {
         position: relative;
-        height: 0.6vh;
+        height: 0.5vh;
         float: left;
         margin-Top: 0.1vw;
         padding-bottom: 0.5vw;

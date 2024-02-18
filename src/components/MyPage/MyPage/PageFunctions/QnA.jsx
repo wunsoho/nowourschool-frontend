@@ -9,7 +9,6 @@ function QnA(){
       navigate('/');
   }
 
-  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aXRsZSI6IuusuOydmOygnOuqqSIsImJvZHkiOiLrrLjsnZjrgrTsmqkifQ.xYKg7hWFrFSnCP12c3FqFL8raypiEEpSmMoFeyvyrLI';
   
   const [postContent1, setPostContent1] = useState('');
   const [postContent2, setPostContent2] = useState('');
@@ -29,7 +28,7 @@ function QnA(){
 };
 
   const handleUpload = async () => {
-
+    const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODI1MDc0NCwiZXhwIjoxNzA4MjU3OTQ0fQ.riLbTDBBS6s6r98ZPfBjUfL3sDcRWn1_y8vt4FGqB8M';
       try {
         const response = await fetch('http://13.125.247.248:8080/api/v1/user/inquiry', {
           method: 'POST',
