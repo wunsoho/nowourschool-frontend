@@ -18,12 +18,12 @@ function ChangePassword2(){
         try {
         const response = await axios.post('http://13.125.247.248:8080/api/v1/auth/change-password', 
         {
-            changePassword: changePassword1,
-        },
-        {
-            header: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODMxOTU2NCwiZXhwIjoxNzA4MzI2NzY0fQ.IxG-E3LeOyNFHjlmaA81YppkkI5vXY3TjW-X-C_NoCw',
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODM1OTQ2NSwiZXhwIjoxNzA4MzY2NjY1fQ.oxoAKbqd-zRB2ZSsVQ0r6FoiFZmk7fh_4fzdutxhcsw',
                 'Content-Type': 'application/json'  
+            },
+            body: {
+                changePassword: changePassword1,
             }
         });
 

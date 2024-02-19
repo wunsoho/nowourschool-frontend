@@ -11,8 +11,8 @@ function Withdrawal(){
         try {
         const response = await axios.delete('http://13.125.247.248:8080/api/v1/auth/change-password',
         {
-            header: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODMxOTU2NCwiZXhwIjoxNzA4MzI2NzY0fQ.IxG-E3LeOyNFHjlmaA81YppkkI5vXY3TjW-X-C_NoCw',
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODM0NDkyNCwiZXhwIjoxNzA4MzUyMTI0fQ.zkoi1Gp_Bh1L3I-b7inp1pO-6o5oq8OGr0vu8Rg6pbQ',
                 'Content-Type': 'application/json'  
             }
         });
