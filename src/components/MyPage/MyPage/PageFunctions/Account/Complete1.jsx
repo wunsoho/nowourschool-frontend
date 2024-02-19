@@ -13,9 +13,6 @@ function Complete1(){
     return(
         <div style={{backgroundColor:"#ffffff",height:"95vh"}}>
             <div style={{paddingTop:"2vh"}}>
-                <Link to="/account">
-                    <img src={hwasalpyo2} alt="화살표" style={{float:"left",margin:"0",marginTop:"2.5vh", marginLeft:"2vw"}}/>
-                </Link>
                 <h3 style={{marginLeft:"34.5vw",letterSpacing:"-1px", fontSize:"20px"}}>비밀번호 변경</h3>
             </div>
             <div>

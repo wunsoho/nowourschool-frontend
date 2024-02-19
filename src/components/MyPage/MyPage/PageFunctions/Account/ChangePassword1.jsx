@@ -37,9 +37,6 @@ function ChangePassword1(){
     
     const navigate = useNavigate();
     const [isPassed, setIsPassed] = useState(false);
-
-    
-
     const [backColor, setBackColor] = useState("#bbbbbb");
     const [fontColor, setFontColor] = useState("black");
 
