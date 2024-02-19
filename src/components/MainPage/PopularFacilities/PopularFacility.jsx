@@ -21,10 +21,10 @@ function PopularFacility(){
       const fetchData = async () => {
         try {
             const result = await axios.get(
-              'https://13.125.247.248:8080/api/v1/facility/library',
+              'http://13.125.247.248:8080/api/v1/facility/library',
               {
                 headers: {
-                  Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODI1ODcwMiwiZXhwIjoxNzA4MjY1OTAyfQ.nwt5ebjGG-XHIwVMCFWpEJelmdGkPhTnyIfARlI0S0w",
+                  Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODMxOTU2NCwiZXhwIjoxNzA4MzI2NzY0fQ.IxG-E3LeOyNFHjlmaA81YppkkI5vXY3TjW-X-C_NoCw",
                 },
               }
             );

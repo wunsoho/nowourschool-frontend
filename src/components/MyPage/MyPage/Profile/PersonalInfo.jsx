@@ -4,19 +4,15 @@ import PlusMark from "../../Image/+.png";
 import { Link, useNavigate } from "react-router-dom";
 import ProfileImage from "../../Image/ProfileImg.png";
 import './style.css';
+import axios from "axios";
+
 
 function Personalnfo(){
 
     const navigate = useNavigate();
 
-    const handleClick =() => {
-        navigate('/',{
-            state: {
-                img: {imgFile}
-            }});
-    }
-
     const [imgFile, setImgFile] = useState(ProfileImage);
+    const [nickName, setNickName] = useState('');
     const imgRef = useRef();
     
     // 이미지 업로드 input의 onChange
@@ -27,6 +23,31 @@ function Personalnfo(){
         reader.onloadend = () => {
             setImgFile(reader.result);
            };
+    };
+
+    const handlePostRequest = async () => {
+        try {
+        const response = await axios.post('http://13.125.247.248:8080/api/v1/user/update-profile', 
+        {
+            imgFile: imgFile,
+            nickName: nickName,
+        },
+        {
+            header: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODMxOTU2NCwiZXhwIjoxNzA4MzI2NzY0fQ.IxG-E3LeOyNFHjlmaA81YppkkI5vXY3TjW-X-C_NoCw',
+                'Content-Type': 'application/json'  
+            }
+        });
+
+        console.log('Server Response:', response.data);
+        } catch (error) {
+        console.error('Error sending POST request:', error);
+        }
+
+        navigate('/',{
+            state: {
+                img: {imgFile}
+        }});
     };
 
     return(
@@ -55,25 +76,25 @@ function Personalnfo(){
 
             <div style={{display:"table"}}>
                 <h4 style={{marginLeft:"3vw"}}>이름</h4>
-                <input type="text" placeholder="홍길동" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
+                <input disabled type="text" placeholder="홍길동" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}></input>
             </div>
             <div style={{display:"table"}}>
                 <h4 style={{marginLeft:"3vw"}}>닉네임</h4>
-                <input type="text" placeholder="메롱고양이" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
+                <input value={nickName} onChange={(e) => setNickName(e.target.value)} type="text" placeholder="메롱고양이" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
             </div>
             <div style={{display:"table"}}>
                 <h4 style={{marginLeft:"3vw"}}>학교</h4>
-                <input type="text" placeholder="울산대학교" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
+                <input disabled type="text" placeholder="울산대학교" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
             </div>
             <div style={{display:"table"}}>
                 <h4 style={{marginLeft:"3vw"}}>전공</h4>
-                <input type="text" placeholder="디지털콘텐츠디자인학과" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
+                <input disabled type="text" placeholder="디지털콘텐츠디자인학과" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
             </div>
             <div style={{display:"table"}}>
                 <h4 style={{marginLeft:"3vw"}}>학년</h4>
-                <input type="text" placeholder="1" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
+                <input disabled type="text" placeholder="1" style={{width:"83vw",height:"6vh",marginLeft:"4vw",paddingLeft:"5vw",backgroundColor:"#f1f1f1",border:"0",borderRadius:"5vw",fontSize:"15px"}}/>
             </div>
-            <button onClick={handleClick} type="submit" style={{width:"90vw",height:"6vh",marginTop:"3vh",marginBottom:"11vh",marginLeft:"3vw",fontSize:"16px",color:"white",backgroundColor:"#1FBC70",border:"0",borderRadius:"5vw"}}>수정</button>
+            <button onClick={handlePostRequest} type="submit" style={{width:"90vw",height:"6vh",marginTop:"3vh",marginBottom:"11vh",marginLeft:"3vw",fontSize:"16px",color:"white",backgroundColor:"#1FBC70",border:"0",borderRadius:"5vw"}}>수정</button>
         </div>
     );
 }

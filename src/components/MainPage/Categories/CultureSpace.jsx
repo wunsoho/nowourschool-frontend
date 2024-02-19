@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
+import hwasalpyo2 from "../Image/hwasalpyo2.png";
 
 function CultureSpace(){
     const {state} = useLocation();
@@ -14,10 +14,10 @@ function CultureSpace(){
         const fetchData = async () => {
           try {
               const result = await axios.get(
-                `https://localhost:8080/api/v1/facility/keyword/${state.keyword["cultural"]}`,
+                `http://localhost:8080/api/v1/facility/keyword/${state.keyword["cultural"]}`,
                 {
                   headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiZW1haWwiOiJ0ZXN0MTExMUBtYWlsLnVsc2FuLmFjLmtyIiwiaWF0IjoxNzA4MjUwOTY0LCJleHAiOjE3MDgyNTgxNjR9.JI4N0BnMxMvPesFK8axiz67jxhRHUIVVNdA9f1hks7g",
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3dW5zb2hvQG1haWwudWxzYW4uYWMua3IiLCJlbWFpbCI6Ind1bnNvaG9AbWFpbC51bHNhbi5hYy5rciIsImlhdCI6MTcwODMxOTU2NCwiZXhwIjoxNzA4MzI2NzY0fQ.IxG-E3LeOyNFHjlmaA81YppkkI5vXY3TjW-X-C_NoCw",
                   },
                 }
               );
