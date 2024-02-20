@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,7 @@ import { NotiViewContent, NotiViewHeader, NotiViewBack, NotiViewTitle, NotiViewB
 
 export default function NotificationView() {
   const [notiViewData, setNotiViewData] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.state.id;
 
@@ -38,6 +39,10 @@ export default function NotificationView() {
     window.history.back();
   };
 
+  const handleListClick = () => {
+    navigate('/notification');
+  };
+
   return (
     <NotiViewContent>
       <NotiViewHeader>
@@ -50,10 +55,10 @@ export default function NotificationView() {
       </NotiViewHeader>
       <NotiViewBoard>
         <NotiTitle>{notiViewData.title}</NotiTitle>
-        <NotiDate>공지일 | {notiViewData.date}</NotiDate>
+        <NotiDate>공지일  |  {notiViewData.date}</NotiDate>
         <NotiContent dangerouslySetInnerHTML={ {__html: notiViewData.content} }></NotiContent>
       </NotiViewBoard>
-      <NotiList onClick={handleBackClick}>목록</NotiList>
+      <NotiList onClick={handleListClick}>목록</NotiList>
     </NotiViewContent>
   );
 }
