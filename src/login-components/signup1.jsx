@@ -26,10 +26,14 @@ function Signup1() {
   const navigate = useNavigate();
 
   const handleConfirm = () => {
-    navigate('/signup2', { state: { name: name, identifyNum: juminFront + juminBack } });
+    const state = {
+      name: name,  // name 속성이 올바르게 전달되는지 확인
+      identify_num: juminFront + juminBack  // identify_num 속성이 올바르게 전달되는지 확인
+    };
+    console.log(state);
+    navigate('/signup2', { state });
+
   };
-
-
 
   return (
     <S.page_su>

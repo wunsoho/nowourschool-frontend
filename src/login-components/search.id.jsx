@@ -1,7 +1,16 @@
 import React from 'react';
 import * as S from "../styled-components/signup.style"
-
+import { useNavigate } from 'react-router-dom';
 function SearchId() {
+  const navigate = useNavigate();
+
+  const goSearchPw = () => {  // 클릭 이벤트 핸들러 추가
+    navigate('/searchpw');
+  };
+
+  const goLogin = () => {  // 클릭 이벤트 핸들러 추가
+    navigate('/');
+  };
     return (
         <S.page_su>
             <S.titleWrap>
@@ -15,8 +24,8 @@ function SearchId() {
               </S.IdBox>
             </S.contentWrap>
             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10vh'}}>
-            <S.SearchIdButtonL>비밀번호 찾기</S.SearchIdButtonL>
-            <S.SearchIdButtonR>로그인</S.SearchIdButtonR>
+            <S.SearchIdButtonL onClick={goSearchPw}>비밀번호 찾기</S.SearchIdButtonL>
+            <S.SearchIdButtonR onClick={goLogin}>로그인</S.SearchIdButtonR>
             </div>
         </S.page_su>
 
